@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" fill="none">
+  <g stroke="#5DBB9E" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m37 39 34 34" stroke-width="16"/>
+    <path d="m68 30 43 43" stroke-width="16"/>
+    <path d="m94 23 52 52" stroke-width="16"/>
+  </g>
+  <g fill="#24142F" font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="-1.5">
+    <text x="155" y="57" font-size="35">active</text>
+    <text x="155" y="88" font-size="35">square</text>
+  </g>
+</svg>

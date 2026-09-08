@@ -1,0 +1,44 @@
+---
+import Logo from './Logo.astro';
+import { navigation, navigationEn, site } from '../data/site';
+import type { Locale } from '../data/i18n';
+
+const year = new Date().getFullYear();
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
+const isEnglish = locale === 'en';
+const items = isEnglish ? navigationEn : navigation;
+const localPageHref = isEnglish ? '/en/digital-consultant-nantes' : '/consultant-digital-nantes';
+const contactHref = isEnglish ? '/en/contact' : '/contact';
+---
+
+<footer class="site-footer">
+  <div class="shell site-footer__main">
+    <div>
+      <Logo locale={locale} />
+      <p class="site-footer__intro">{isEnglish ? 'Strategy, creation and technology brought together in practical projects.' : 'Conseil, création et technique réunis dans des projets concrets.'}<br />Web · AI · Media · {isEnglish ? 'Project management' : 'Pilotage'}</p>
+    </div>
+    <div class="site-footer__links">
+      <div>
+        <p class="eyebrow">{isEnglish ? 'Navigation' : 'Navigation'}</p>
+        {items.map((item) => <a href={item.href}>{item.label}</a>)}
+        <a href={localPageHref}>{isEnglish ? 'Digital consultant in Nantes' : 'Consultant numérique à Nantes'}</a>
+      </div>
+      <div>
+        <p class="eyebrow">{isEnglish ? 'Get in touch' : 'Échangeons'}</p>
+        <a href={'mailto:' + site.email}>{site.email}</a>
+        <a href={'tel:' + site.phoneHref}>{site.phoneDisplay}</a>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href={contactHref}>{isEnglish ? 'Get in touch ↗' : 'Prendre contact ↗'}</a>
+      </div>
+    </div>
+  </div>
+  <div class="shell site-footer__bottom">
+    <span>© {year} {site.person}</span>
+      <span>{isEnglish ? 'Nantes · France · Remote' : site.location}</span>
+      <div>
+        <a href={isEnglish ? '/en/legal-notice' : '/mentions-legales'}>{isEnglish ? 'Legal notice' : 'Mentions légales'}</a>
+        <a href={isEnglish ? '/en/privacy' : '/confidentialite'}>{isEnglish ? 'Privacy' : 'Confidentialité'}</a>
+    </div>
+  </div>
+</footer>

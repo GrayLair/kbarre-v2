@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Kévin Barré — Consultant numérique, formateur IA et chef de projet</title>
+  <desc id="description">Identité visuelle violette et bleue de Ꝃ'Barré.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#452265"/>
+      <stop offset="1" stop-color="#4974A5"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".12" r=".72">
+      <stop stop-color="#D9D2E0" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#D9D2E0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="996" cy="145" r="215" fill="none" stroke="#fff" stroke-opacity=".32"/>
+  <path d="M916 559C902 411 986 333 1128 319" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+  <text x="92" y="235" fill="#D9D2E0" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="4">Ꝃ'BARRÉ</text>
+  <text x="88" y="352" fill="#fff" font-family="Georgia, serif" font-size="76">Du flou au flux.</text>
+  <text x="92" y="425" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="28">Consultant numérique · Formateur IA · Chef de projet</text>
+</svg>

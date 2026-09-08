@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SeoFaq from '../components/SeoFaq.astro';
+
+const practices = [
+  {
+    number: '01',
+    title: 'Composer et produire',
+    text: 'La musique commence par une intention, une écoute et une structure. Ableton Live et Fruity Loops — aujourd’hui FL Studio — font partie des outils qui ont construit cette pratique avant l’arrivée des modèles génératifs.',
+    icon: '/images/kit/waves.svg',
+  },
+  {
+    number: '02',
+    title: 'Monter et mettre en image',
+    text: 'Le montage, le rythme et l’attention portée au détail comptent autant que l’outil. DaVinci Resolve et la suite Adobe apportent cette culture de la postproduction et de la finition.',
+    icon: '/images/kit/design-grid.svg',
+  },
+  {
+    number: '03',
+    title: 'Créer avec l’IA',
+    text: 'Suno ouvre un espace d’exploration rapide pour la musique. L’outil nourrit les essais ; la direction artistique, la sélection et la cohérence du résultat restent des choix humains.',
+    icon: '/images/kit/code-mark.svg',
+  },
+];
+
+const process = [
+  ['01', 'Partir d’une intention', 'Un univers, une émotion, un rythme, une référence ou un usage donnent une direction. Sans cette étape, l’outil génère des possibilités sans véritable propos.'],
+  ['02', 'Explorer et itérer', 'L’IA permet de multiplier les essais, de comparer des pistes et de faire émerger des contrastes. Cette phase demande de savoir écouter, formuler et recommencer.'],
+  ['03', 'Choisir et construire', 'La sélection n’est pas une formalité : elle sert à tenir une ligne, à organiser les séquences et à écarter ce qui ne raconte pas la bonne chose.'],
+  ['04', 'Finaliser le média', 'Montage, arrangement, édition audio ou vidéo, habillage et contrôle de cohérence ramènent la création vers un résultat pensé pour son support et son public.'],
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création musicale et média assistée par IA à Nantes',
+  description: 'Création musicale, contenus audio et vidéo, et direction créative assistée par IA, à Nantes et à distance.',
+  provider: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  areaServed: ['Nantes', 'Loire-Atlantique', 'France'],
+  serviceType: ['Création musicale', 'Création multimédia', 'Production audio', 'Création assistée par IA'],
+};
+---
+
+<BaseLayout
+  title="Création musicale et média assistée par IA à Nantes"
+  description="Création musicale, audio, vidéo et contenus média assistés par IA : une pratique fondée sur la composition, le montage et la direction artistique."
+  structuredData={serviceSchema}
+>
+  <PageHero
+    eyebrow="Création média & IA"
+    title="Créer avant l’IA. Créer avec elle."
+    text="Ma pratique de compositeur s’est construite avec les outils de production et de postproduction classiques. L’IA générative, notamment Suno pour la musique, élargit aujourd’hui le champ des essais sans remplacer l’écoute, le goût ni la direction."
+    aside="Ableton Live · Fruity Loops / FL Studio · DaVinci Resolve · Suite Adobe · Suno"
+    ctaHref="/contact?demande=media"
+    ctaLabel="Parler d’une création"
+    visual="/images/heroes/media-creation.png"
+    visualAlt="Appareil photo et outils de création multimédia sur un bureau"
+    visualWidth={1122}
+    visualHeight={1402}
+    motif="/images/kit/waves.svg"
+  />
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Une pratique qui ne commence pas avec un prompt"
+        title="L’outil change. L’attention reste."
+        text="Composer, monter et produire ont toujours été des activités de choix : choisir une intention, un rythme, une matière, puis savoir quand s’arrêter."
+        align="split"
+      />
+      <div class="service-grid">
+        {practices.map((practice) => (
+          <article class="service-card">
+            <span class="service-card__number">{practice.number}</span>
+            <img class="service-card__icon" src={practice.icon} width="500" height="440" alt="" loading="lazy" decoding="async" />
+            <h3>{practice.title}</h3>
+            <p>{practice.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Composition, image et postproduction"
+        title="Une culture de la forme et du détail."
+        text="La pratique des outils standards précède l’IA générative : elle donne des repères pour construire une progression musicale, sentir un montage, équilibrer une séquence et finaliser un média."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Musique</p>
+          <h3>Donner une trajectoire à l’écoute.</h3>
+          <p>Avec Ableton Live et Fruity Loops, la composition se travaille par couches, motifs, silences, contrastes et évolution. Cette expérience reste le point de comparaison nécessaire pour évaluer les propositions d’un outil génératif.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Image & vidéo</p>
+          <h3>Faire tenir un récit dans un format.</h3>
+          <p>DaVinci Resolve et la suite Adobe prolongent ce même travail de rythme et de cohérence. Un plan, un son, un texte ou une transition ne sont utiles que s’ils servent l’idée d’ensemble et les conditions de diffusion.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Création musicale avec Suno"
+        title="L’IA comme partenaire d’exploration."
+        text="Suno permet d’ouvrir vite des pistes musicales, de tester des directions et de confronter une intention à plusieurs interprétations. Il ne dispense ni d’un cadre, ni d’un regard critique sur ce qui est produit."
+        align="split"
+      />
+      <ol class="process-list">
+        {process.map(([number, title, text]) => (
+          <li>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Du média isolé au projet complet"
+        title="Faire dialoguer son, image et présence numérique."
+        text="La création média peut vivre seule ou enrichir un projet plus large : identité d’un site, contenu éditorial, capsule vidéo, univers sonore ou expérimentation artistique. Le format vient après l’intention et le contexte de diffusion."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Direction créative</p>
+          <h3>Éviter le contenu interchangeable.</h3>
+          <p>Avant de produire, il faut définir ce qui doit être ressenti, compris ou retenu. Cette direction permet d’utiliser les outils — classiques ou génératifs — sans perdre la singularité du projet.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Cadre de production</p>
+          <h3>Rendre les choix explicites.</h3>
+          <p>La place de l’IA, les sources utilisées, les validations attendues et les droits de diffusion doivent être clarifiés au début du travail. Cette transparence protège autant le projet que les personnes qui y contribuent.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <SeoFaq
+    title="Questions sur la création assistée par IA."
+    intro="Un outil génératif peut accélérer l’exploration. Il ne remplace ni une intention claire, ni les choix de production qui rendent une création cohérente."
+    items={[
+      {
+        question: 'Quelle place prend Suno dans une création musicale ?',
+        answer: 'Suno peut servir à explorer des directions, à tester des ambiances et à générer des matières musicales. La valeur du travail se joue aussi dans le brief, l’itération, l’écoute critique, la sélection, l’organisation et les finitions apportées au résultat.',
+      },
+      {
+        question: 'Pourquoi parler des outils utilisés avant l’IA générative ?',
+        answer: 'Parce que la composition, le montage et la postproduction donnent des repères concrets pour juger un résultat : structure, rythme, cohérence, intention et qualité de finition. L’IA s’inscrit dans cette pratique, elle ne la remplace pas.',
+      },
+      {
+        question: 'Peut-on associer création média, site Web et IA ?',
+        answer: 'Oui. Un même projet peut nécessiter une identité éditoriale, un site, un univers sonore, des contenus visuels ou un workflow de production. L’intérêt d’une pratique transversale est de conserver une direction commune entre ces éléments.',
+      },
+      {
+        question: 'Comment aborder les droits et la transparence ?',
+        answer: 'Le rôle de chaque outil, les sources, les autorisations nécessaires et les conditions de diffusion doivent être examinés pour le projet concerné. Ces sujets font partie du cadrage, au même titre que l’intention créative et le format de livraison.',
+      },
+    ]}
+  />
+
+  <section class="section section--purple">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Une idée à mettre en forme</p>
+          <h2>Parlons du son, de l’image ou de l’univers à construire.</h2>
+        </div>
+        <a class="button button--light" href="/contact?demande=media">Décrire votre projet <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

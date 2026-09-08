@@ -1,0 +1,58 @@
+---
+import Logo from './Logo.astro';
+import LanguageToggle from './LanguageToggle.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { navigation, navigationEn } from '../data/site';
+import { toEnglishPath, toFrenchPath, type Locale } from '../data/i18n';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
+const items = locale === 'en' ? navigationEn : navigation;
+const homeHref = locale === 'en' ? '/en' : '/';
+const switchHref = locale === 'en' ? toFrenchPath(pathname) : toEnglishPath(pathname);
+const contactHref = locale === 'en' ? '/en/contact' : '/contact';
+const contactLabel = locale === 'en' ? 'Let’s talk' : 'Parlons projet';
+const mobileContactLabel = locale === 'en' ? 'Talk about your project ↗' : 'Parlons de votre projet ↗';
+---
+
+<header class="site-header">
+  <div class="site-header__inner shell">
+    <Logo locale={locale} />
+    <nav class="desktop-nav" aria-label={locale === 'en' ? 'Main navigation' : 'Navigation principale'}>
+      {items.map((item) => (
+        <a class:list={{ active: pathname === item.href }} aria-current={pathname === item.href ? 'page' : undefined} href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+    <div class="header-tools">
+      <LanguageToggle locale={locale} href={switchHref} />
+      <ThemeToggle locale={locale} />
+    </div>
+    <a class="button button--small header-cta" href={contactHref}>{contactLabel} <span aria-hidden="true">↗</span></a>
+    <details class="mobile-nav">
+      <summary aria-controls="mobile-links"><span>Menu</span><span class="menu-bars" aria-hidden="true"><i></i><i></i></span></summary>
+      <nav id="mobile-links" aria-label={locale === 'en' ? 'Mobile navigation' : 'Navigation mobile'}>
+        <a href={homeHref} aria-current={pathname === homeHref ? 'page' : undefined}>{locale === 'en' ? 'Home' : 'Accueil'}</a>
+        {items.map((item) => <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</a>)}
+        <a href={contactHref} aria-current={pathname === contactHref ? 'page' : undefined}>{mobileContactLabel}</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+  const summary = menu?.querySelector('summary');
+  menu?.addEventListener('toggle', () => summary?.setAttribute('aria-expanded', String(menu.open)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) { menu.open = false; summary?.focus(); }
+  });
+  document.addEventListener('click', (event) => {
+    if (menu?.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+  });
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+  menu?.addEventListener('focusout', (event) => {
+    if (event.relatedTarget instanceof Node && !menu.contains(event.relatedTarget)) menu.open = false;
+  });
+  matchMedia('(min-width: 1101px)').addEventListener('change', (event) => { if (event.matches && menu) menu.open = false; });
+</script>

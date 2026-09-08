@@ -1,0 +1,33 @@
+# Dependencies and Astro build output
+node_modules/
+dist/
+.astro/
+
+# Local deployment copies and archived builds
+upload-ovh/
+upload-ovh-staging/
+dist-v1/
+dist-v2/
+
+# Local QA tooling, reports and visual review exports
+.qa-tools/
+.qa-artifacts/
+home-logo-review.png
+remote-new-kbarre.html
+
+# Environment-specific configuration
+.env
+.env.*
+!.env.example
+
+# Source evidence supplied for audits; never ship or commit by default
+source/
+
+# Logs and operating-system files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db

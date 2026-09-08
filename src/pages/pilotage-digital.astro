@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SeoFaq from '../components/SeoFaq.astro';
+
+const services = [
+  {
+    number: '01',
+    title: 'Cadrer le projet',
+    text: 'Clarifier les objectifs, le périmètre, les parties prenantes et les critères qui définiront une livraison réussie.',
+    icon: '/images/kit/analytics.svg',
+  },
+  {
+    number: '02',
+    title: 'Faire le lien',
+    text: 'Traduire les besoins métier en demandes compréhensibles par les équipes techniques — et inversement.',
+    icon: '/images/kit/waves.svg',
+  },
+  {
+    number: '03',
+    title: 'Garder le cap',
+    text: 'Prioriser, coordonner, rendre compte et résoudre les points de blocage sans perdre de vue l’adoption finale.',
+    icon: '/images/kit/arrow-progress.svg',
+  },
+];
+
+const phases = [
+  ['01', 'Le besoin', 'Entretiens, compréhension du contexte, priorités et risques.'],
+  ['02', 'La feuille de route', 'Périmètre, livrables, estimation, rythme et gouvernance.'],
+  ['03', 'La livraison', 'Coordination, arbitrages, recette et communication utile.'],
+  ['04', 'L’après', 'Formation, documentation, maintenance et amélioration continue.'],
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Chef de projet numérique freelance à Nantes',
+  description: 'Cadrage, AMOA, analyse fonctionnelle et pilotage de projet numérique à Nantes et à distance.',
+  provider: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  areaServed: ['Nantes', 'Loire-Atlantique', 'France'],
+  serviceType: ['Pilotage de projet numérique', 'Chef de projet freelance', 'AMOA numérique', 'Analyse fonctionnelle'],
+};
+---
+
+<BaseLayout
+  title="Chef de projet numérique freelance à Nantes"
+  description="Chef de projet numérique freelance à Nantes : cadrage, analyse fonctionnelle, coordination et accompagnement de projets, sur site ou à distance."
+  structuredData={serviceSchema}
+>
+  <PageHero
+    eyebrow="Pilotage de projet"
+    title="Un cap clair. Un projet qui avance."
+    text="Je fais le lien entre vos équipes, vos enjeux et la technique. Du cadrage à la livraison, vous savez où vous allez."
+    ctaHref="/contact?demande=pilotage"
+    ctaLabel="Parlons de votre projet"
+    visual="/images/heroes/project-management.png"
+    visualAlt="Tableau de pilotage de projet avec backlog, priorités et tâches en cours"
+    visualWidth={1536}
+    visualHeight={1024}
+    motif="/images/kit/waves.svg"
+  />
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Un partenaire de clarté"
+        title="Les bonnes personnes. La même direction."
+        text="Un cadre pour décider, avancer et embarquer les utilisateurs."
+        align="split"
+      />
+      <div class="service-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <span class="service-card__number">{service.number}</span>
+            <img class="service-card__icon" src={service.icon} width="500" height="440" alt="" loading="lazy" decoding="async" />
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="editorial-copy editorial-copy--night">
+        <p>Le pilotage n’ajoute pas une couche de réunion ou de reporting pour elle-même. Il rend visibles les décisions, les dépendances et les points qui demandent un arbitrage. Ce cadre permet à chacun de savoir pourquoi il intervient et ce qui doit être livré ensuite.</p>
+        <p>Selon le contexte, cela passe par une expression de besoin, des parcours, une feuille de route, des critères de recette ou simplement une façon plus nette de travailler ensemble. Le support importe moins que son utilité réelle pour les personnes qui doivent décider et produire.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Une trajectoire lisible"
+        title="De l’idée au quotidien des utilisateurs."
+        text="La méthode s’adapte à la taille et à la maturité du projet, mais ces quatre sujets doivent toujours être regardés."
+        align="split"
+      />
+      <ol class="process-list">
+        {phases.map(([number, title, text]) => (
+          <li>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="editorial-copy">
+        <p>Un projet avance rarement de manière parfaitement linéaire. Les priorités changent, des questions techniques apparaissent et les utilisateurs révèlent de nouveaux besoins. L’enjeu est de garder une trace de ces évolutions sans perdre l’objectif initial ni enfermer l’équipe dans un plan devenu obsolète.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <img class="section-diagram" src="/images/signature/project-trajectory.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Chef de projet numérique à Nantes"
+        title="Le bon renfort, au bon moment."
+        text="Une intervention ponctuelle ou dans la durée, à Nantes et à distance."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Cadrage & AMOA</p>
+          <h3>Poser les bases.</h3>
+          <p>Objectifs, parcours, besoins fonctionnels, priorités, risques et critères de recette : un projet se débloque souvent en rendant ces éléments explicites.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Pilotage externalisé</p>
+          <h3>Tenir le fil.</h3>
+          <p>Des points de travail courts, des décisions tracées, des livrables lisibles et une attention continue à ce qui permettra aux utilisateurs d’adopter la solution.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <SeoFaq
+    title="Vos questions sur le pilotage."
+    intro="Une intervention de chef de projet freelance doit donner du mouvement et de la lisibilité, pas ajouter une couche de gestion."
+    items={[
+      {
+        question: 'À quel moment faire intervenir un chef de projet numérique freelance ?',
+        answer: 'Quand un projet reste flou, qu’une équipe doit coordonner plusieurs interlocuteurs, qu’une livraison approche ou qu’il faut reprendre une trajectoire qui dérive. L’intervention peut commencer par un cadrage court avant de définir la suite.',
+      },
+      {
+        question: 'Que livrez-vous après une phase de cadrage ?',
+        answer: 'Selon le contexte, le cadrage peut aboutir à une feuille de route, une expression de besoin, des parcours, des priorités, une liste de livrables, des critères de recette ou un plan de coordination. L’important est que ces éléments servent réellement les décisions suivantes.',
+      },
+      {
+        question: 'Peut-on piloter un projet numérique à distance ?',
+        answer: 'Oui. Des ateliers ciblés, un rythme de suivi connu, des comptes rendus de décision et des documents partagés permettent de travailler efficacement avec des équipes distribuées. Des temps sur site à Nantes peuvent être prévus quand ils apportent une vraie valeur.',
+      },
+    ]}
+  />
+
+  <section class="section section--purple">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Un projet à remettre en mouvement</p>
+          <h2>Remettons votre projet en mouvement.</h2>
+        </div>
+        <a class="button button--light" href="/contact?demande=pilotage">Parler du projet <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

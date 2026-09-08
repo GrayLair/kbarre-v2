@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SeoFaq from '../components/SeoFaq.astro';
+
+const offers = [
+  {
+    number: '01',
+    title: 'Former aux bons usages',
+    text: 'Des ateliers accessibles et directement liés aux situations de travail : comprendre, tester, questionner et adopter avec discernement.',
+    icon: '/images/kit/code-mark.svg',
+  },
+  {
+    number: '02',
+    title: 'Cadrer avant d’automatiser',
+    text: 'Identifier les irritants réels, les données disponibles, les risques et les usages à prioriser avant de choisir une solution.',
+    icon: '/images/kit/target-browser.svg',
+  },
+  {
+    number: '03',
+    title: 'Orchestrer les flux',
+    text: 'Concevoir des workflows, automatisations et agents qui trouvent naturellement leur place dans les outils et habitudes existants.',
+    icon: '/images/kit/interface-map.svg',
+  },
+];
+
+const process = [
+  ['01', 'Cartographier', 'Repérer les tâches répétitives, les pertes d’information et les opportunités qui méritent réellement un effort.'],
+  ['02', 'Prioriser', 'Choisir peu de cas d’usage, mais utiles, mesurables et acceptables pour les personnes concernées.'],
+  ['03', 'Prototyper', 'Tester rapidement un flux ou un assistant, avec les bons garde-fous et sans promettre l’impossible.'],
+  ['04', 'Faire adopter', 'Former, documenter et ajuster pour que le nouvel usage devienne une aide, pas une charge supplémentaire.'],
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Formation IA et automatisation à Nantes',
+  description: 'Formation IA, cadrage de cas d’usage, workflows et automatisation pour les équipes à Nantes et à distance.',
+  provider: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  areaServed: ['Nantes', 'Loire-Atlantique', 'France'],
+  serviceType: ['Formation IA', 'Automatisation IA', 'Cadrage de cas d’usage', 'Workflow métier'],
+};
+---
+
+<BaseLayout
+  title="Formation IA & automatisation à Nantes"
+  description="Formation IA, automatisation et workflows pour PME, agences et équipes à Nantes, en Pays de la Loire et à distance partout en France."
+  structuredData={serviceSchema}
+>
+  <PageHero
+    eyebrow="IA & automatisation"
+    title="L’IA utile. Les équipes d’abord."
+    text="Des formations concrètes et des automatisations adaptées à votre métier. Pour gagner en autonomie, sans perdre la main."
+    ctaHref="/contact?demande=ia"
+    ctaLabel="Parlons de vos usages"
+    visual="/images/heroes/ai-automation.png"
+    visualAlt="Écran présentant un workflow d’automatisation et d’agent IA"
+    visualWidth={1122}
+    visualHeight={1402}
+    motif="/images/kit/code-mark.svg"
+  />
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Une IA qui a sa place"
+        title="Moins de friction. Plus d’autonomie."
+        text="On part de vos tâches, de vos documents et de vos équipes."
+        align="split"
+      />
+      <div class="service-grid">
+        {offers.map((offer) => (
+          <article class="service-card">
+            <span class="service-card__number">{offer.number}</span>
+            <img class="service-card__icon" src={offer.icon} width="500" height="440" alt="" loading="lazy" decoding="async" />
+            <h3>{offer.title}</h3>
+            <p>{offer.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="editorial-copy editorial-copy--night">
+        <p>L’IA devient intéressante lorsqu’elle répond à une situation identifiable : retrouver une information, préparer une première version, structurer un contenu ou réduire une tâche répétitive. Le travail ne consiste pas à ajouter un outil de plus, mais à comprendre ce qui circule déjà entre les personnes, les documents et les validations.</p>
+        <p>Cette approche vaut aussi pour la création. Les outils génératifs peuvent ouvrir des pistes musicales, visuelles ou éditoriales, à condition que l’intention, les sources utilisées et le regard final restent clairement assumés.</p>
+        <a class="text-link" href="/creation-media-ia">Voir la pratique création média & IA <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formation">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Formation"
+        title="Comprendre. Essayer. S’approprier."
+        text="Sensibilisation, atelier métier ou accompagnement : le format s’adapte à votre équipe."
+        align="split"
+      />
+      <div class="method-grid">
+        <article class="method-step">
+          <span class="method-step__number">01</span>
+          <h3>Comprendre</h3>
+          <p>Ce que l’IA peut faire, ce qu’elle ne doit pas décider seule et comment la questionner.</p>
+        </article>
+        <article class="method-step">
+          <span class="method-step__number">02</span>
+          <h3>Pratiquer</h3>
+          <p>Des exercices construits à partir de situations, documents et tâches réellement rencontrés.</p>
+        </article>
+        <article class="method-step">
+          <span class="method-step__number">03</span>
+          <h3>Encadrer</h3>
+          <p>Des repères de confidentialité, de qualité, de validation et de responsabilité.</p>
+        </article>
+        <article class="method-step">
+          <span class="method-step__number">04</span>
+          <h3>Continuer</h3>
+          <p>Des supports et un plan de suite pour éviter que l’atelier reste sans lendemain.</p>
+        </article>
+      </div>
+      <div class="editorial-copy">
+        <p>Une formation utile ne cherche pas à faire de chaque participant un spécialiste technique. Elle donne des repères pour formuler une demande, contrôler une réponse, protéger les informations sensibles et savoir quand une validation humaine est indispensable. Les exercices gagnent à partir de documents et de situations que l’équipe reconnaît immédiatement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted" id="orchestration">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Orchestration"
+        title="Du bon prompt au bon système."
+        text="Des automatisations intégrées à vos outils, avec une validation humaine au bon moment."
+        align="split"
+      />
+      <ol class="process-list">
+        {process.map(([number, title, text]) => (
+          <li>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Formation IA à Nantes et à distance"
+        title="Un premier pas, à votre mesure."
+        text="À Nantes, en Pays de la Loire ou à distance partout en France."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Atelier d’équipe</p>
+          <h3>Apprendre en faisant.</h3>
+          <p>Une sensibilisation ou un atelier métier pour comprendre les possibilités, poser les limites et tester des cas d’usage avec les bons garde-fous.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Premier workflow</p>
+          <h3>Tester avant de déployer.</h3>
+          <p>Un cadrage court pour identifier les données, validations et outils nécessaires à une automatisation réellement utile pour l’équipe.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <SeoFaq
+    title="Vos questions sur l’IA."
+    intro="L’IA apporte de la valeur quand le cas d’usage, les données et le rôle des personnes sont explicites."
+    items={[
+      {
+        question: 'À qui s’adresse une formation IA en entreprise ?',
+        answer: 'À des équipes qui veulent comprendre ce que l’IA peut réellement faire dans leur métier, l’essayer sur des situations concrètes et garder un regard critique sur les résultats. Le niveau technique et le format s’adaptent aux personnes concernées.',
+      },
+      {
+        question: 'Comment choisir un premier usage d’automatisation IA ?',
+        answer: 'On privilégie une tâche répétitive, un point de friction ou un besoin d’accès à l’information qui revient souvent. Avant de choisir l’outil, il faut vérifier les données disponibles, les règles de confidentialité, les validations nécessaires et le bénéfice attendu.',
+      },
+      {
+        question: 'Les ateliers IA peuvent-ils se dérouler à distance ?',
+        answer: 'Oui. Les ateliers, cadrages et points d’avancement peuvent être organisés à Nantes ou en visioconférence. Des supports partagés, des exercices adaptés et un plan de suite rendent le travail à distance aussi concret que possible.',
+      },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Parlons de vos usages</p>
+          <h2>Votre premier déclic IA commence ici.</h2>
+        </div>
+        <a class="button button--light" href="/contact?demande=ia">Échanger sur un besoin IA <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

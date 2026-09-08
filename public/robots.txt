@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /lab/
+
+Sitemap: https://kbarre.fr/sitemap-index.xml

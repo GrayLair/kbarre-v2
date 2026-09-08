@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page introuvable" description="Cette page n'existe pas ou a été déplacée." robots="noindex,follow">
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow">Erreur 404</p>
+      <h1>Petit détour imprévu.</h1>
+      <p class="lede">Revenons à l’essentiel : le projet, le profil ou un premier échange.</p>
+      <div class="hero__actions">
+        <a class="button" href="/">Retour à l’accueil <span aria-hidden="true">↗</span></a>
+        <a class="button button--outline" href="/contact">Me contacter <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

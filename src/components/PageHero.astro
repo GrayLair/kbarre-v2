@@ -1,0 +1,34 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  text: string;
+  aside?: string;
+  visual?: string;
+  visualAlt?: string;
+  visualWidth?: number;
+  visualHeight?: number;
+  motif?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const { eyebrow, title, text, aside, visual, visualAlt = '', visualWidth = 960, visualHeight = 1200, motif, ctaHref, ctaLabel = 'Parlons de votre projet' } = Astro.props;
+const optimized = visual?.startsWith('/images/signature/') ? visual.replace('/images/signature/', '/images/optimized/').replace('.jpg', '') : undefined;
+---
+
+<section class:list={['page-hero', { 'page-hero--visual': visual }]}>
+  <div class="shell page-hero__inner">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lede">{text}</p>
+      {ctaHref && <div class="hero__actions"><a class="button" href={ctaHref}>{ctaLabel} <span aria-hidden="true">↗</span></a></div>}
+      {aside && <p class="page-hero__aside">{aside}</p>}
+    </div>
+    {visual && <div class="page-hero__media">
+      <img src={optimized ? optimized + '-960.webp' : visual} srcset={optimized ? optimized + '-480.webp 480w, ' + optimized + '-960.webp 960w' : undefined} sizes="(max-width: 760px) 90vw, 40vw" alt={visualAlt} width={visualWidth} height={visualHeight} loading="eager" decoding="async" fetchpriority="high" />
+      {motif && <span class="page-hero__motif" aria-hidden="true"><img src={motif} width="96" height="96" alt="" /></span>}
+    </div>}
+  </div>
+</section>

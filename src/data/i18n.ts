@@ -1,0 +1,30 @@
+export type Locale = 'fr' | 'en';
+
+const englishPaths: Record<string, string> = {
+  '/': '/en',
+  '/ia-automatisation': '/en/ai-automation',
+  '/creation-media-ia': '/en/media-creation-ai',
+  '/pilotage-digital': '/en/digital-project-management',
+  '/sites-web-premium': '/en/premium-websites',
+  '/realisations': '/en/work',
+  '/profil': '/en/profile',
+  '/contact': '/en/contact',
+  '/consultant-digital-nantes': '/en/digital-consultant-nantes',
+  '/merci': '/en/thank-you',
+  '/mentions-legales': '/en/legal-notice',
+  '/confidentialite': '/en/privacy',
+};
+
+const frenchPaths = Object.fromEntries(
+  Object.entries(englishPaths).map(([frenchPath, englishPath]) => [englishPath, frenchPath]),
+);
+
+const normalize = (path: string) => {
+  const cleaned = path.replace(/\/$/, '');
+  return cleaned || '/';
+};
+
+const withTrailingSlash = (path: string) => path === '/' ? '/' : path.replace(/\/$/, '') + '/';
+
+export const toEnglishPath = (path: string) => withTrailingSlash(englishPaths[normalize(path)] ?? '/en');
+export const toFrenchPath = (path: string) => withTrailingSlash(frenchPaths[normalize(path)] ?? '/');

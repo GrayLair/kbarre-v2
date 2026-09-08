@@ -1,0 +1,125 @@
+---
+import globalStyles from '../styles/global.inline.css?raw';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { toEnglishPath, toFrenchPath, type Locale } from '../data/i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  robots?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  locale?: Locale;
+}
+
+const {
+  title = site.person + ' — Consultant numérique & créateur multimédia',
+  description = site.description,
+  canonical,
+  image = '/social-cover.svg',
+  robots = 'index,follow,max-image-preview:large',
+  structuredData,
+  locale = 'fr',
+} = Astro.props;
+
+const pageTitle = title.includes(site.person) ? title : title + ' · ' + site.person;
+const canonicalUrl = canonical ? new URL(canonical, site.url).href : new URL(Astro.url.pathname, site.url).href;
+const socialImage = new URL(image, site.url).href;
+const alternatePath = locale === 'en' ? toFrenchPath(Astro.url.pathname) : toEnglishPath(Astro.url.pathname);
+const alternateUrl = new URL(alternatePath, site.url).href;
+const normalizedPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isProfilePage = normalizedPath === '/profil' || normalizedPath === '/en/profile';
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.person,
+  url: site.url,
+  jobTitle: locale === 'en' ? 'Digital consultant, multimedia creator and AI trainer' : 'Consultant numérique, créateur multimédia et formateur IA',
+  image: new URL('/images/heroes/profile-kevin.png', site.url).href,
+  email: site.email,
+  telephone: site.phoneHref,
+  sameAs: [site.linkedin],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Nantes',
+    addressCountry: 'FR',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Nantes' },
+    { '@type': 'AdministrativeArea', name: 'Loire-Atlantique' },
+    { '@type': 'Country', name: 'France' },
+  ],
+  availableLanguage: ['fr', 'en'],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: site.email,
+    telephone: site.phoneHref,
+    availableLanguage: ['fr', 'en'],
+  },
+  knowsAbout: [
+    locale === 'en' ? 'Digital project management' : 'Gestion de projet numérique',
+    locale === 'en' ? 'Artificial intelligence training' : 'Formation à l’intelligence artificielle',
+    locale === 'en' ? 'Automation' : 'Automatisation',
+    locale === 'en' ? 'Functional analysis' : 'Analyse fonctionnelle',
+    locale === 'en' ? 'Website design' : 'Conception de sites Web',
+    locale === 'en' ? 'AI-assisted music creation' : 'Création musicale assistée par IA',
+    locale === 'en' ? 'Multimedia creation' : 'Création multimédia',
+  ],
+};
+const additionalSchemas = structuredData
+  ? (Array.isArray(structuredData) ? structuredData : [structuredData])
+  : [];
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f6" />
+    <style set:html={globalStyles} />
+    <script is:inline>
+      try {
+        const savedTheme = localStorage.getItem('kbarre-theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme;
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon" />
+    <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png" />
+    <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={locale === 'en' ? 'fr' : 'en'} href={alternateUrl} />
+    <link rel="alternate" hreflang="x-default" href={locale === 'en' ? alternateUrl : canonicalUrl} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    {[...(isProfilePage ? [personSchema] : []), ...additionalSchemas].map((schema) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+    <title>{pageTitle}</title>
+  </head>
+  <body class="site-body">
+    <a class="skip-link" href="#content">Aller au contenu</a>
+    <Header locale={locale} />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

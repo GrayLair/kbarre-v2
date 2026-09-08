@@ -1,0 +1,57 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  items: FaqItem[];
+}
+
+const {
+  eyebrow = 'Questions fréquentes',
+  title,
+  intro,
+  items,
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<section class="section section--muted seo-faq" aria-labelledby="faq-title">
+  <div class="shell">
+    <header class="seo-faq__heading">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id="faq-title">{title}</h2>
+      {intro && <p>{intro}</p>}
+    </header>
+    <div class="seo-faq__list">
+      {items.map((item, index) => (
+        <details class="seo-faq__item" open={index === 0}>
+          <summary>
+            <span>{item.question}</span>
+            <span class="seo-faq__marker" aria-hidden="true"></span>
+          </summary>
+          <div class="seo-faq__answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+</section>

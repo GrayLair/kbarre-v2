@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SeoFaq from '../components/SeoFaq.astro';
+
+const services = [
+  {
+    number: '01',
+    title: 'Clarifier la présence',
+    text: 'Positionnement, architecture de contenus et parcours de conversion : la fondation avant l’habillage.',
+    icon: '/images/kit/target-browser.svg',
+  },
+  {
+    number: '02',
+    title: 'Concevoir l’expérience',
+    text: 'Une identité lisible, une interface singulière et une hiérarchie qui donne envie de lire et d’agir.',
+    icon: '/images/kit/wireframe.svg',
+  },
+  {
+    number: '03',
+    title: 'Soigner chaque détail',
+    text: 'Un site rapide, agréable sur mobile et facile à faire évoluer avec votre activité.',
+    icon: '/images/kit/code.svg',
+  },
+];
+
+const commitments = [
+  ['01', 'Performance', 'Une expérience rapide sur mobile, des médias optimisés et peu de JavaScript.'],
+  ['02', 'Visibilité', 'Une base SEO saine : structure, contenus, métadonnées, sitemap et redirections.'],
+  ['03', 'Autonomie', 'Des contenus structurés pour faire évoluer le site sans dépendre d’un éditeur lourd.'],
+  ['04', 'Soin', 'Chaque détail d’interface doit servir la compréhension, la confiance ou la conversion.'],
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création et refonte de site Web à Nantes',
+  description: 'Conception, refonte et intégration de sites Web performants, accessibles et orientés conversion à Nantes et à distance.',
+  provider: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  areaServed: ['Nantes', 'Loire-Atlantique', 'France'],
+  serviceType: ['Création de site Web', 'Communication numérique', 'Gestion des réseaux sociaux', 'Campagnes d’acquisition', 'Configuration ERP', 'Web analytics', 'Refonte de site WordPress', 'WordPress headless', 'Développement React', 'Intégration Web', 'SEO technique'],
+};
+---
+
+<BaseLayout
+  title="Création de sites Web & communication numérique à Nantes"
+  description="Création de sites Web, communication numérique, réseaux sociaux, analytics et campagnes d’acquisition à Nantes, avec WordPress, Gutenberg et React."
+  structuredData={serviceSchema}
+>
+  <PageHero
+    eyebrow="Sites Web & communication numérique"
+    title="Votre présence mérite mieux qu’un simple site."
+    text="Stratégie, design, contenus, réseaux sociaux, acquisition et performance : les bons canaux doivent raconter la même histoire et donner envie de vous suivre."
+    ctaHref="/contact?demande=web"
+    ctaLabel="Parlons de votre site"
+    visual="/images/heroes/web-communication.png"
+    visualAlt="Poste de travail avec code et aperçu d’un site Web"
+    visualWidth={1672}
+    visualHeight={941}
+    motif="/images/kit/design-grid.svg"
+  />
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Une présence qui travaille"
+        title="Beau, rapide, clair : les trois vont ensemble."
+        text="Du premier regard à la prise de contact, chaque détail compte."
+        align="split"
+      />
+      <div class="service-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <span class="service-card__number">{service.number}</span>
+            <img class="service-card__icon" src={service.icon} width="500" height="440" alt="" loading="lazy" decoding="async" />
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="editorial-copy editorial-copy--night">
+        <p>Un site n’est pas seulement une interface à livrer. C’est un point de rencontre entre une activité, une promesse, des contenus et des visiteurs qui ne connaissent pas encore forcément votre travail. La conception commence donc par ce qu’ils doivent comprendre, trouver et pouvoir faire.</p>
+        <p>Le design, l’intégration et le référencement deviennent plus solides lorsqu’ils partagent cette même architecture. C’est ce qui évite d’ajouter le SEO, la performance ou les contenus à la fin, une fois les choix importants déjà verrouillés.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Des exigences simples"
+        title="Beau à voir. Simple à vivre."
+        text="Rapide à charger, agréable à parcourir, accessible, facile à maintenir et honnête sur ce qu’il promet."
+        align="split"
+      />
+      <ol class="process-list">
+        {commitments.map(([number, title, text]) => (
+          <li>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="editorial-copy">
+        <p>La bonne solution technique dépend de la fréquence de mise à jour, du rôle du site, des personnes qui l’administrent et des intégrations nécessaires. Il n’y a pas d’outil universel à imposer : une refonte utile conserve ce qui fonctionne, clarifie ce qui freine et prépare des évolutions réalistes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted" id="wordpress-headless">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="WordPress headless, Gutenberg & React"
+        title="La liberté du front. L’autonomie de Gutenberg."
+        text="Avec quinze ans de pratique des CMS, notamment WordPress, je peux concevoir une architecture où Gutenberg reste l’outil simple de l’équipe éditoriale tandis qu’une interface React porte l’expérience publique."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Gutenberg côté contenu</p>
+          <h3>Un back-office visuel, cadré et évolutif.</h3>
+          <p>Pages, actualités, médias et contenus structurés sont administrés avec Gutenberg. Des blocs et compositions sur mesure donnent aux équipes la liberté de publier, sans les laisser reconstruire l’interface ni dépendre d’un développeur à chaque mise à jour.</p>
+        </article>
+        <article>
+          <p class="eyebrow">React côté expérience</p>
+          <h3>Une interface pensée sans les limites d’un thème.</h3>
+          <p>Le front-end React lit les contenus exposés par WordPress et permet de construire une expérience sur mesure : composants réutilisables, parcours spécifiques, interactions choisies et contrôle fin de l’interface. Cette séparation peut aussi faciliter l’évolution de chaque partie du projet.</p>
+        </article>
+      </div>
+      <div class="editorial-copy">
+        <p>La recommandation de base est un système Gutenberg sobre : quelques blocs sur mesure, des modèles de composition et des règles éditoriales explicites. Il donne l’autonomie utile sans faire du back-office un constructeur de pages illimité. WordPress expose ensuite ces contenus à l’interface React via son API.</p>
+        <p>Une architecture headless ne consiste pas à « couper » WordPress pour suivre une tendance. Elle devient pertinente quand un site demande une expérience très spécifique, plusieurs points de diffusion ou un front-end qui doit évoluer indépendamment du back-office. Pour un site éditorial simple, un WordPress bien conçu avec Gutenberg peut rester le choix le plus raisonnable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="communication-social-media">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Communication numérique & social media"
+        title="Faire vivre la présence, pas seulement la publier."
+        text="Un site, un compte social, une campagne ou un outil métier ne travaillent pas seuls. L’enjeu est de construire une communication cohérente, mesurable et adaptée aux personnes que vous voulez atteindre."
+        align="split"
+      />
+      <div class="service-grid">
+        <article class="service-card">
+          <span class="service-card__number">01</span>
+          <h3>Structurer les canaux</h3>
+          <p>Positionnement, ligne éditoriale, comptes réseaux sociaux et formats de contenus : chaque canal a son rôle, mais tous doivent rester reconnaissables et reliés à votre activité.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-card__number">02</span>
+          <h3>Mesurer ce qui compte</h3>
+          <p>Configurer les outils d’analyse, suivre les bons signaux et comprendre les parcours permet de décider sur des faits plutôt que de publier ou d’investir à l’aveugle.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-card__number">03</span>
+          <h3>Développer l’audience</h3>
+          <p>Concevoir et suivre des campagnes d’acquisition ou de croissance des abonnés demande une cible claire, des contenus adaptés, un budget maîtrisé et des ajustements réguliers.</p>
+        </article>
+      </div>
+      <div class="service-scope communication-scope">
+        <article>
+          <p class="eyebrow">Comptes & campagnes</p>
+          <h3>Passer d’une présence dispersée à un système lisible.</h3>
+          <p>Accompagnement des comptes sociaux, organisation des contenus, préparation des campagnes et lecture des résultats : le travail vise une présence qui s’inscrit dans le temps, sans confondre visibilité et promesse de résultats automatiques.</p>
+        </article>
+        <article>
+          <p class="eyebrow">ERP & outils métier</p>
+          <h3>Faire circuler l’information au bon endroit.</h3>
+          <p>La configuration d’un ERP ou d’outils connectés doit servir les équipes : données plus fiables, étapes mieux suivies et continuité entre communication, relation client et opérations. Le bon paramétrage part toujours des usages réels.</p>
+        </article>
+      </div>
+      <div class="editorial-copy">
+        <p>La communication numérique n’est pas une suite de publications isolées. Elle relie le site, les réseaux sociaux, les campagnes, les contenus et les outils qui permettent d’observer ce qui se passe ensuite. C’est cette continuité qui rend une présence plus claire pour le public et plus pilotable pour l’équipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Création de site Web à Nantes"
+        title="Une nouvelle page pour votre activité."
+        text="Création et refonte à Nantes ou à distance. Vos objectifs et vos contenus donnent la direction."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Refonte utile</p>
+          <h3>Un nouveau souffle.</h3>
+          <p>Un audit de l’existant permet de reprendre les contenus, les priorités de référencement, les parcours et les habitudes de mise à jour avant de choisir la bonne solution technique.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Nouveau site</p>
+          <h3>Une première impression juste.</h3>
+          <p>Le design n’est pas une couche finale : il organise l’information, fait comprendre la proposition de valeur et facilite le premier contact, sur mobile comme sur ordinateur.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <SeoFaq
+    title="Vos questions côté web."
+    intro="Un site Web performant ne se résume pas à une technologie ou à une maquette : il part de ce que les visiteurs doivent comprendre et faire."
+    items={[
+      {
+        question: 'Faut-il conserver WordPress lors d’une refonte ?',
+        answer: 'Pas systématiquement. Le bon choix dépend du rôle du site, du niveau d’autonomie attendu, des contenus, des intégrations et de la performance recherchée. Une refonte commence par l’analyse des besoins, pas par un changement d’outil par principe.',
+      },
+      {
+        question: 'Pourquoi associer WordPress headless et React ?',
+        answer: 'Cette architecture sépare le CMS du front-end. Gutenberg reste le back-office éditorial, avec des blocs et des modèles cadrés, tandis qu’une interface React peut être conçue sur mesure. Elle est intéressante lorsque l’expérience, les parcours ou les points de diffusion demandent plus de liberté qu’un thème traditionnel, sans faire perdre l’autonomie de publication à l’équipe.',
+      },
+      {
+        question: 'Pouvez-vous accompagner les réseaux sociaux et les campagnes d’acquisition ?',
+        answer: 'Oui. L’accompagnement peut couvrir la structuration des comptes, la ligne éditoriale, les contenus, la préparation de campagnes, le suivi des indicateurs et les ajustements. L’objectif est d’améliorer la cohérence et la qualité des décisions ; aucun volume d’abonnés ou de contacts n’est promis sans contexte, budget et données de départ.',
+      },
+      {
+        question: 'Comment concilier site premium, performance et SEO ?',
+        answer: 'En structurant les contenus et les parcours avant de dessiner, puis en limitant les dépendances, en optimisant les médias et en soignant les fondamentaux techniques : HTML sémantique, métadonnées, sitemap, redirections et expérience mobile.',
+      },
+      {
+        question: 'Pouvez-vous accompagner une création de site Web à distance ?',
+        answer: 'Oui. Le cadrage, les ateliers de contenus, les validations et le suivi peuvent se dérouler à distance avec des supports partagés et des étapes de décision claires. Des rendez-vous à Nantes sont possibles lorsque le projet le justifie.',
+      },
+    ]}
+  />
+
+  <section class="section section--purple">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Votre site mérite mieux</p>
+          <h2>Prêt à faire évoluer votre présence web ?</h2>
+        </div>
+        <a class="button button--light" href="/contact?demande=web">Parler de votre site <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

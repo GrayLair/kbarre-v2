@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SeoFaq from '../components/SeoFaq.astro';
+
+const offers = [
+  {
+    number: '01',
+    title: 'Cadrer et piloter',
+    text: 'Pour transformer une intention encore floue en feuille de route, décisions utiles et livrables partagés.',
+    icon: '/images/kit/analytics.svg',
+  },
+  {
+    number: '02',
+    title: 'Concevoir le bon support Web',
+    text: 'Pour créer ou refondre un site clair, performant et cohérent avec votre offre, vos contenus et votre parcours client.',
+    icon: '/images/kit/design-grid.svg',
+  },
+  {
+    number: '03',
+    title: 'Créer avec l’IA',
+    text: 'Pour explorer des usages créatifs, former aux bons outils et garder une direction humaine dans la production de contenus.',
+    icon: '/images/kit/interface-map.svg',
+  },
+  {
+    number: '04',
+    title: 'Faire vivre un projet',
+    text: 'Pour coordonner les métiers, les contenus, les outils et les décisions jusqu’à une mise en pratique utile.',
+    icon: '/images/kit/arrow-progress.svg',
+  },
+];
+
+const steps = [
+  ['01', 'Premier échange', 'Nous clarifions l’enjeu, les personnes concernées, le niveau d’urgence et le bon format de mission.'],
+  ['02', 'Cadre partagé', 'Objectifs, périmètre, points de décision et rythme de travail : chacun sait ce qui est attendu.'],
+  ['03', 'Avancement visible', 'Ateliers, points courts et livrables lisibles permettent de décider sans multiplier les réunions.'],
+  ['04', 'Transmission', 'Une solution utile doit pouvoir continuer sans dépendre d’un consultant : documentation et montée en autonomie font partie du travail.'],
+];
+
+const localServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Consultant numérique freelance à Nantes',
+  description: 'Cadrage, pilotage de projet numérique, création média assistée par IA, formation et conception de sites Web à Nantes et à distance.',
+  provider: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  areaServed: ['Nantes', 'Loire-Atlantique', 'France'],
+  serviceType: ['Conseil numérique', 'Pilotage de projet numérique', 'Création média assistée par IA', 'Formation IA', 'Conception de site Web'],
+};
+---
+
+<BaseLayout
+  title="Consultant numérique freelance à Nantes"
+  description="Consultant numérique indépendant à Nantes : création média assistée par IA, formation, pilotage de projet et sites Web, sur site ou à distance."
+  structuredData={localServiceSchema}
+>
+  <PageHero
+    eyebrow="Nantes · Pays de la Loire · À distance"
+    title="Votre consultant numérique à Nantes."
+    text="Création média, IA, Web et pilotage : un professionnel indépendant de proximité pour les PME, équipes, agences et porteurs de projet. À Nantes et partout en France à distance."
+    ctaHref="/contact"
+    visual="/images/signature/kevin-city-walk.jpg"
+    visualAlt="Kévin Barré dans un quartier de bureaux"
+    motif="/images/kit/location-pin.svg"
+  />
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Une continuité plutôt qu’un catalogue"
+        title="Du conseil à la mise en pratique."
+        text="Un projet à cadrer, un site à repenser, un contenu à créer ou une équipe à accompagner."
+        align="split"
+      />
+      <div class="service-grid service-grid--four">
+        {offers.map((offer) => (
+          <article class="service-card">
+            <span class="service-card__number">{offer.number}</span>
+            <img class="service-card__icon" src={offer.icon} width="500" height="440" alt="" loading="lazy" decoding="async" />
+            <h3>{offer.title}</h3>
+            <p>{offer.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="editorial-copy editorial-copy--night">
+        <p>Travailler depuis Nantes ne limite pas un projet à un secteur ou à un seul format. L’intérêt d’un interlocuteur indépendant est de pouvoir relier le besoin initial à sa mise en œuvre : un atelier pour clarifier, un média pour rendre une idée sensible, un site pour la présenter ou un cadre de projet pour faire avancer l’ensemble.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--diagram">
+    <img class="section-diagram" src="/images/signature/systems-blueprint.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <div class="shell">
+      <SectionHeading
+        eyebrow="À Nantes ou en remote"
+        title="Proches, même à distance."
+        text="Des ateliers ciblés, des points réguliers et des décisions partagées. À Nantes ou en visioconférence, le cadre s’adapte à la nature du travail plutôt qu’à un modèle unique."
+        align="split"
+      />
+      <ol class="process-list">
+        {steps.map(([number, title, text]) => (
+          <li>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="editorial-copy">
+        <p>Le présentiel apporte beaucoup lorsqu’il faut écouter plusieurs points de vue, manipuler une matière créative ou débloquer une décision collective. À distance, des documents partagés, un rythme de travail connu et des retours préparés rendent les échanges plus légers sans les rendre impersonnels.</p>
+      </div>
+    </div>
+  </section>
+
+  <SeoFaq
+    title="Choisir un consultant numérique à Nantes"
+    intro="Quelques repères pour savoir si mon approche correspond à votre situation."
+    items={[
+      {
+        question: 'Intervenez-vous uniquement à Nantes ?',
+        answer: 'Non. Je peux intervenir sur site à Nantes et en Pays de la Loire, ou travailler à distance avec des équipes partout en France. Le cadre de travail reste le même : objectifs explicites, interlocuteurs identifiés, décisions tracées et livrables partagés.',
+      },
+      {
+        question: 'Avec quels types d’organisation travaillez-vous ?',
+        answer: 'Avec des PME, des équipes internes, des agences et des porteurs de projet qui ont besoin de clarifier une trajectoire numérique, un site Web ou un premier usage d’IA. Le bon format dépend du contexte, pas de la taille de l’organisation.',
+      },
+      {
+        question: 'Comment commencer une mission ?',
+        answer: 'Le premier échange sert à comprendre l’enjeu, le niveau de maturité, les contraintes et le résultat attendu. Il permet ensuite de proposer un format réaliste : atelier, cadrage, accompagnement de projet, formation ou réalisation Web.',
+      },
+    ]}
+  />
+
+  <section class="section section--purple">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Un besoin à rendre concret</p>
+          <h2>Un projet à Nantes ou ailleurs ?</h2>
+        </div>
+        <a class="button button--light" href="/contact">Me parler du contexte <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

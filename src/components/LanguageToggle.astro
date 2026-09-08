@@ -1,0 +1,15 @@
+---
+import type { Locale } from '../data/i18n';
+
+interface Props {
+  locale: Locale;
+  href: string;
+}
+
+const { locale, href } = Astro.props;
+const label = locale === 'fr' ? 'Read this page in English' : 'Lire cette page en français';
+const text = locale === 'fr' ? 'EN' : 'FR';
+---
+
+<a class="language-toggle" href={href} lang={locale === 'fr' ? 'en' : 'fr'} aria-label={label}>{text}</a>
+

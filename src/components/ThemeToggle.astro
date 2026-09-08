@@ -1,0 +1,44 @@
+---
+import type { Locale } from '../data/i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const labels = locale === 'fr'
+  ? { dark: 'Activer le mode sombre', light: 'Activer le mode clair' }
+  : { dark: 'Switch to dark mode', light: 'Switch to light mode' };
+---
+
+<button
+  class="theme-toggle"
+  type="button"
+  aria-pressed="false"
+  aria-label={labels.dark}
+  data-dark-label={labels.dark}
+  data-light-label={labels.light}
+>
+  <span class="theme-toggle__sun" aria-hidden="true">☀</span>
+  <span class="theme-toggle__moon" aria-hidden="true">☾</span>
+</button>
+
+<script>
+  const themeToggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+
+  const readTheme = () => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+  const renderThemeToggle = () => {
+    if (!themeToggle) return;
+    const isDark = readTheme() === 'dark';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.setAttribute('aria-label', isDark ? themeToggle.dataset.lightLabel ?? '' : themeToggle.dataset.darkLabel ?? '');
+  };
+
+  renderThemeToggle();
+  themeToggle?.addEventListener('click', () => {
+    const nextTheme = readTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+    try { localStorage.setItem('kbarre-theme', nextTheme); } catch { /* Storage can be unavailable. */ }
+    renderThemeToggle();
+  });
+</script>

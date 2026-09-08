@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Politique de confidentialité"
+  description="Informations relatives au traitement des données personnelles sur kbarre.fr."
+>
+  <PageHero
+    eyebrow="Données personnelles"
+    title="Politique de confidentialité"
+    text="Une collecte limitée au nécessaire, expliquée de façon claire : le formulaire sert à répondre aux demandes reçues."
+  />
+
+  <section class="section section--muted">
+    <div class="shell">
+      <div class="privacy-copy legal-copy">
+        <p class="legal-copy__updated">Dernière mise à jour : 8 septembre 2026.</p>
+
+        <h2>Responsable du traitement</h2>
+        <p>Le responsable du traitement est Kévin Barré, entrepreneur individuel, 28 rue d’Allonville, 44000 Nantes, France. Pour toute question relative aux données personnelles : <a href={'mailto:' + site.email}>{site.email}</a>.</p>
+
+        <h2>Données collectées et finalités</h2>
+        <p>Le site ne propose ni compte utilisateur ni espace client. Les seules données directement collectées sont celles que vous transmettez volontairement par le formulaire de contact :</p>
+        <ul class="legal-list">
+          <li><strong>obligatoires :</strong> nom, adresse e-mail, sujet de la demande et message ;</li>
+          <li><strong>facultatives :</strong> organisation, numéro de téléphone et budget indicatif.</li>
+        </ul>
+        <p>Ces informations servent uniquement à répondre à votre demande, à qualifier le besoin exprimé et, si vous le souhaitez, à préparer une proposition ou un échange professionnel.</p>
+
+        <h2>Base légale</h2>
+        <p>Le traitement est fondé sur la prise de mesures précontractuelles à votre demande lorsqu’un projet ou une prestation est envisagé, ou sur l’intérêt légitime de Kévin Barré à répondre aux sollicitations professionnelles reçues. Aucune décision automatisée ni profilage n’est réalisé à partir de ces données.</p>
+
+        <h2>Destinataires et sous-traitants</h2>
+        <p>Les données sont accessibles à Kévin Barré et, dans la limite nécessaire à leur fonctionnement, aux prestataires techniques impliqués dans l’hébergement du site et la réception des e-mails. Elles ne sont ni vendues, ni louées, ni cédées à des fins publicitaires.</p>
+
+        <h2>Durées de conservation</h2>
+        <p>Les demandes qui n’aboutissent pas à une relation contractuelle sont conservées pendant trois ans à compter du dernier contact. Lorsqu’une relation contractuelle est engagée, les données utiles à son exécution ou aux obligations comptables et fiscales sont conservées pendant les durées légales applicables.</p>
+
+        <h2>Vos droits</h2>
+        <p>Vous pouvez demander l’accès à vos données, leur rectification, leur effacement, la limitation du traitement, vous y opposer ou demander la portabilité lorsque les conditions sont réunies. Vous pouvez exercer ces droits en écrivant à <a href={'mailto:' + site.email}>{site.email}</a>.</p>
+        <p>En cas de difficulté non résolue, vous pouvez introduire une réclamation auprès de la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL</a>.</p>
+
+        <h2>Cookies, stockage local et mesure d’audience</h2>
+        <p>Le site ne dépose pas de cookie publicitaire, ne charge pas de pixel marketing et n’utilise pas d’outil de mesure d’audience. Il mémorise uniquement le choix de thème clair ou sombre dans le stockage local de votre navigateur, sous la clé <code>kbarre-theme</code>. Cette préférence est fonctionnelle, n’est pas transmise à un tiers et peut être supprimée depuis les réglages de votre navigateur.</p>
+        <p>Si un outil de mesure d’audience, de publicité ou un service tiers nécessitant un consentement est ajouté, cette page sera mise à jour et un mécanisme de choix adapté sera mis en place avant son activation.</p>
+
+        <h2>Sécurité et liens externes</h2>
+        <p>Des mesures techniques et organisationnelles raisonnables sont mises en œuvre pour protéger les informations transmises. Aucun système ne pouvant garantir une sécurité absolue, il est recommandé de ne pas envoyer de données sensibles par le formulaire.</p>
+        <p>Les liens vers des services externes, notamment LinkedIn, relèvent de la politique de confidentialité de ces services dès lors que vous les consultez.</p>
+
+        <h2>Mise à jour de cette politique</h2>
+        <p>Cette politique peut évoluer pour refléter une évolution du site, des traitements réalisés ou du cadre réglementaire. La date de mise à jour figurant en haut de page permet d’identifier la version applicable.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

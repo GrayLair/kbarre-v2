@@ -1,0 +1,89 @@
+---
+interface Props {
+  locale?: 'fr' | 'en';
+}
+
+const { locale = 'fr' } = Astro.props;
+const labels = locale === 'en'
+  ? { title: 'Selected client collaborations.', hint: 'Drag to explore all collaborators.' }
+  : { title: 'Quelques belles collaborations.', hint: 'Faites glisser pour explorer toutes les collaborations.' };
+
+const clients = [
+  ['Active Square', 'active-square'],
+  ['Aqua Feu', 'aqua-feu'],
+  ['Bernon Minon', 'bernon-minon'],
+  ['Brioches Fonteneau', 'brioches-fonteneau'],
+  ['Design Compo', 'design-compo'],
+  ['Desmars Beloncle Cabioch', 'desmars-beloncle-cabioch'],
+  ['Elite Orga', 'elite-orga'],
+  ['Emilie Care', 'emilie-care'],
+  ['Fastnet', 'fastnet'],
+  ['Frederic Bausset', 'frederic-bausset'],
+  ['Genicado', 'genicado'],
+  ['JCMAT Riviera', 'jcmat-riviera'],
+  ['Label Pop', 'label-pop'],
+  ['Le Temple Automobile', 'le-temple-automobile'],
+  ['Miroiterie de Cognac', 'miroiterie-de-cognac'],
+  ['Oxygene Consulting', 'oxygene-consulting'],
+  ['Turgis Capital', 'turgis-capital'],
+  ['Unicentre', 'unicentre'],
+  ['Virginia Immobilier', 'virginia-immobilier'],
+  ["Vue d'ici", 'vue-dici'],
+] as const;
+---
+
+<section class="client-strip" aria-label={labels.title}>
+  <div class="shell client-strip__inner">
+    <div class="client-strip__intro">
+      <p>{labels.title}</p>
+      <span>{labels.hint}</span>
+    </div>
+    <div class="client-carousel" data-client-carousel>
+      <div class="client-carousel__viewport" data-client-carousel-viewport tabindex="0" role="region" aria-label={labels.title}>
+        <ul class="client-carousel__track">
+          {clients.map(([name, file]) => (
+            <li class="client-carousel__item">
+              <img src={'/images/clients-transparent/' + file + '.webp'} alt={name} width="180" height="96" loading="lazy" draggable="false" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import EmblaCarousel from 'embla-carousel';
+  import AutoScroll from 'embla-carousel-auto-scroll';
+
+  document.querySelectorAll<HTMLElement>('[data-client-carousel]').forEach((carousel) => {
+    const viewport = carousel.querySelector<HTMLElement>('[data-client-carousel-viewport]');
+    if (!viewport) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const autoScroll = AutoScroll({
+      playOnInit: !reducedMotion,
+      startDelay: 0,
+      speed: 0.65,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+      stopOnFocusIn: true,
+      rootNode: (emblaRoot) => emblaRoot.parentElement,
+    });
+    const embla = EmblaCarousel(viewport, {
+      align: 'start',
+      containScroll: false,
+      dragFree: true,
+      loop: true,
+    }, [autoScroll]);
+
+    viewport.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      event.key === 'ArrowLeft' ? embla.scrollPrev() : embla.scrollNext();
+    });
+
+    // Start explicitly once hydration is complete so the first visible frame moves.
+    if (!reducedMotion) embla.plugins().autoScroll?.play(0);
+  });
+</script>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact · conseil numérique et création média à Nantes"
+  description="Contactez Kévin Barré à Nantes pour un projet Web, IA, création média ou pilotage de projet, sur site ou à distance."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Tout commence par un bonjour."
+    text="Une idée, un besoin, un projet encore flou ? Racontez-moi. On trouvera le bon point de départ."
+  />
+
+  <section class="section section--muted" id="demande">
+    <div class="shell contact-grid">
+      <form class="lead-form" action="/contact.php" method="post" aria-label="Parlez-moi de votre projet">
+        <div class="lead-form__grid">
+          <label>
+            <span>Nom <b aria-hidden="true">*</b></span>
+            <input name="name" type="text" autocomplete="name" required minlength="2" />
+          </label>
+          <label>
+            <span>Organisation</span>
+            <input name="company" type="text" autocomplete="organization" />
+          </label>
+          <label>
+            <span>E-mail <b aria-hidden="true">*</b></span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Téléphone</span>
+            <input name="phone" type="tel" autocomplete="tel" />
+          </label>
+        </div>
+        <label>
+          <span>Votre besoin <b aria-hidden="true">*</b></span>
+          <select name="request_type" required>
+            <option value="" selected disabled>Sélectionner un sujet</option>
+            <option>Formation IA</option>
+            <option>Automatisation / agents</option>
+            <option>Création musicale / média assistée par IA</option>
+            <option>Pilotage de projet</option>
+            <option>Site Web premium</option>
+            <option>Communication numérique / réseaux sociaux</option>
+            <option>Campagne d’acquisition / analytics</option>
+            <option>Configuration ERP / outils métier</option>
+            <option>Renfort / collaboration</option>
+            <option>Recrutement</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>
+          <span>Budget indicatif</span>
+          <select name="budget">
+            <option value="" selected>Je préfère en discuter</option>
+            <option>Moins de 3 000 €</option>
+            <option>3 000 — 10 000 €</option>
+            <option>10 000 — 30 000 €</option>
+            <option>Plus de 30 000 €</option>
+          </select>
+        </label>
+        <label>
+          <span>Quelques lignes sur le contexte <b aria-hidden="true">*</b></span>
+          <textarea name="message" rows="5" required minlength="20" aria-describedby="message-hint" placeholder="Ce que vous aimeriez faire évoluer, votre contexte, vos envies…"></textarea>
+          <small id="message-hint">20 caractères minimum. Quelques phrases suffisent.</small>
+        </label>
+        <label class="lead-form__honeypot" aria-hidden="true">
+          <span>Ne pas remplir ce champ</span>
+          <input name="website" type="text" tabindex="-1" autocomplete="off" />
+        </label>
+        <p class="lead-form__legal">
+          Les champs marqués d’un astérisque sont nécessaires pour traiter votre demande. Vos données sont utilisées par Kévin Barré pour vous répondre et conservées au plus trois ans après le dernier contact si aucun contrat n’est conclu.{' '}
+          <a href="/confidentialite">En savoir plus sur vos droits et vos données.</a>
+        </p>
+        <button class="button" type="submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+      </form>
+      <div>
+        <p class="eyebrow">Le contact direct</p>
+        <h2>Vous préférez en parler ?</h2>
+        <p class="lede">Un e-mail, un appel ou un message LinkedIn : choisissez ce qui vous convient.</p>
+        <div class="contact-options">
+          <a class="contact-option" href={'mailto:' + site.email}><span>Par e-mail</span><span>{site.email} ↗</span></a>
+          <a class="contact-option" href={'tel:' + site.phoneHref}><span>Par téléphone</span><span>{site.phoneDisplay} ↗</span></a>
+          <a class="contact-option" href={site.linkedin} target="_blank" rel="noopener noreferrer"><span>Sur LinkedIn</span><span>Retrouvons-nous ↗</span></a>
+        </div>
+        <p class="contact-note">À Nantes ou à distance.<br />Vos informations servent uniquement à vous répondre.</p>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  const requested = new URLSearchParams(location.search).get('demande');
+  const topics: Record<string, string> = { ia: 'Formation IA', web: 'Site Web premium', pilotage: 'Pilotage de projet', media: 'Création musicale / média assistée par IA', social: 'Communication numérique / réseaux sociaux', acquisition: 'Campagne d’acquisition / analytics', erp: 'Configuration ERP / outils métier', recrutement: 'Recrutement', automatisation: 'Automatisation / agents' };
+  const select = document.querySelector<HTMLSelectElement>('select[name="request_type"]');
+  if (select && requested && topics[requested]) select.value = topics[requested];
+</script>
