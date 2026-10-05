@@ -5,18 +5,22 @@ import ThemeToggle from './ThemeToggle.astro';
 import { navigation, navigationEn } from '../data/site';
 import { toEnglishPath, toFrenchPath, type Locale } from '../data/i18n';
 
-const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const normalizePath = (path: string) => path === '/' ? '/' : path.replace(/\/$/, '');
+const pathname = normalizePath(Astro.url.pathname);
 interface Props { locale?: Locale; }
 const { locale = 'fr' } = Astro.props;
 const items = locale === 'en' ? navigationEn : navigation;
-const homeHref = locale === 'en' ? '/en' : '/';
+const homeHref = locale === 'en' ? '/en/' : '/';
 const switchHref = locale === 'en' ? toFrenchPath(pathname) : toEnglishPath(pathname);
-const contactHref = locale === 'en' ? '/en/contact' : '/contact';
+const contactHref = locale === 'en' ? '/en/contact/' : '/contact/';
 const contactLabel = locale === 'en' ? 'Let’s talk' : 'Parlons projet';
 const mobileContactLabel = locale === 'en' ? 'Talk about your project ↗' : 'Parlons de votre projet ↗';
-const isNavActive = (href: string) => pathname === href ||
-  (href === '/pilotage-digital' && pathname === '/pilotage-projet-complexe') ||
-  (href === '/en/digital-project-management' && pathname === '/en/project-leadership');
+const isNavActive = (href: string) => {
+  const normalizedHref = normalizePath(href);
+  return pathname === normalizedHref ||
+    (normalizedHref === '/pilotage-digital' && pathname === '/pilotage-projet-complexe') ||
+    (normalizedHref === '/en/digital-project-management' && pathname === '/en/project-leadership');
+};
 ---
 
 <header class="site-header">

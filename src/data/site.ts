@@ -12,19 +12,19 @@ export const site = {
 };
 
 export const navigation = [
-  { href: '/ia-automatisation', label: 'IA & automatisation' },
-  { href: '/creation-media-ia', label: 'Création média' },
-  { href: '/pilotage-digital', label: 'Pilotage de projet' },
-  { href: '/sites-web-premium', label: 'Sites Web' },
-  { href: '/realisations', label: 'Réalisations' },
+  { href: '/ia-automatisation/', label: 'IA & automatisation' },
+  { href: '/creation-media-ia/', label: 'Création média' },
+  { href: '/pilotage-digital/', label: 'Pilotage de projet' },
+  { href: '/sites-web-premium/', label: 'Sites Web' },
+  { href: '/realisations/', label: 'Réalisations' },
 ];
 
 export const navigationEn = [
-  { href: '/en/ai-automation', label: 'AI & automation' },
-  { href: '/en/media-creation-ai', label: 'Media creation' },
-  { href: '/en/digital-project-management', label: 'Project management' },
-  { href: '/en/premium-websites', label: 'Websites' },
-  { href: '/en/work', label: 'Work' },
+  { href: '/en/ai-automation/', label: 'AI & automation' },
+  { href: '/en/media-creation-ai/', label: 'Media creation' },
+  { href: '/en/digital-project-management/', label: 'Project management' },
+  { href: '/en/premium-websites/', label: 'Websites' },
+  { href: '/en/work/', label: 'Work' },
 ];
 
 export const capabilities = [
@@ -32,21 +32,21 @@ export const capabilities = [
     number: '01',
     title: 'Former à l’IA utile',
     text: 'Des formations concrètes, adaptées aux métiers, pour passer de la curiosité aux usages maîtrisés.',
-    href: '/ia-automatisation#formation',
+    href: '/ia-automatisation/#formation',
     icon: '/images/kit/code-mark.svg',
   },
   {
     number: '02',
     title: 'Orchestrer les bons outils',
     text: 'Des workflows, agents et automatisations pensés pour les équipes, les contraintes et les résultats attendus.',
-    href: '/ia-automatisation#orchestration',
+    href: '/ia-automatisation/#orchestration',
     icon: '/images/kit/interface-map.svg',
   },
   {
     number: '03',
     title: 'Faire aboutir les projets',
     text: 'Cadrage, coordination, intégration Web et accompagnement à l’adoption — du besoin à la mise en pratique.',
-    href: '/pilotage-digital',
+    href: '/pilotage-digital/',
     icon: '/images/kit/arrow-progress.svg',
   },
 ];

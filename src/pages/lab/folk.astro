@@ -13,7 +13,7 @@ const projects = [
     <header class="final-nav final-nav--light">
       <a class="final-wordmark" href="/lab/">Ꝃ.barré<span>°</span></a>
       <nav aria-label="Prototype Folk"><a href="#folk-expertises">Expertises</a><a href="#folk-travaux">Travaux</a><a href="#folk-profil">Profil</a></nav>
-      <a class="final-nav__cta" href="/contact">Démarrer un projet ↗</a>
+      <a class="final-nav__cta" href="/contact/">Démarrer un projet ↗</a>
     </header>
 
     <section class="folk-hero">
@@ -21,7 +21,7 @@ const projects = [
         <p class="final-kicker">Consultant numérique · Formateur IA</p>
         <h1>Faire simple.<br /><em>Même quand tout ne l’est pas.</em></h1>
         <p>J’organise les projets, les outils et les équipes pour transformer une ambition numérique en résultat concret.</p>
-        <div class="folk-actions"><a href="/contact">Parler de votre besoin <span>↗</span></a><a href="#folk-travaux">Voir les réalisations ↓</a></div>
+        <div class="folk-actions"><a href="/contact/">Parler de votre besoin <span>↗</span></a><a href="#folk-travaux">Voir les réalisations ↓</a></div>
       </div>
 
       <div class="folk-board" aria-label="Aperçu d’un espace de pilotage">
@@ -45,18 +45,18 @@ const projects = [
       <div class="folk-bento">
         <article class="folk-bento__ai lab-reveal">
           <span>01 · IA & automatisation</span><h3>Des usages IA qui trouvent leur place dans le travail réel.</h3><p>Formation, agents, prompting, automatisation et gouvernance.</p>
-          <div class="folk-flow" aria-hidden="true"><i>Besoin</i><b>→</b><i>Agent</i><b>→</b><i>Équipe</i><b>→</b><i>Impact</i></div><a href="/ia-automatisation">Explorer ↗</a>
+          <div class="folk-flow" aria-hidden="true"><i>Besoin</i><b>→</b><i>Agent</i><b>→</b><i>Équipe</i><b>→</b><i>Impact</i></div><a href="/ia-automatisation/">Explorer ↗</a>
         </article>
-        <article class="folk-bento__pilot lab-reveal"><span>02 · Pilotage</span><strong>150 k€</strong><h3>De budget projet déjà piloté.</h3><p>Cadrage, coordination et accompagnement au changement.</p><a href="/pilotage-digital">Explorer ↗</a></article>
-        <article class="folk-bento__web lab-reveal"><span>03 · Web</span><div class="folk-window" aria-hidden="true"><i></i><i></i><i></i><b>Performance<br />+ clarté</b></div><h3>Des sites sobres dans leur fonctionnement, premium dans leur présence.</h3><a href="/sites-web-premium">Explorer ↗</a></article>
+        <article class="folk-bento__pilot lab-reveal"><span>02 · Pilotage</span><strong>150 k€</strong><h3>De budget projet déjà piloté.</h3><p>Cadrage, coordination et accompagnement au changement.</p><a href="/pilotage-digital/">Explorer ↗</a></article>
+        <article class="folk-bento__web lab-reveal"><span>03 · Web</span><div class="folk-window" aria-hidden="true"><i></i><i></i><i></i><b>Performance<br />+ clarté</b></div><h3>Des sites sobres dans leur fonctionnement, premium dans leur présence.</h3><a href="/sites-web-premium/">Explorer ↗</a></article>
       </div>
     </section>
 
     <section class="folk-work" id="folk-travaux">
-      <header class="lab-reveal"><div><p class="final-kicker">Quelques preuves / 02</p><h2>Le concret,<br />bien cadré.</h2></div><a href="/realisations">Toutes les réalisations ↗</a></header>
+      <header class="lab-reveal"><div><p class="final-kicker">Quelques preuves / 02</p><h2>Le concret,<br />bien cadré.</h2></div><a href="/realisations/">Toutes les réalisations ↗</a></header>
       <div class="folk-work__grid">
         {projects.map((project, index) => (
-          <a class="folk-project lab-reveal" href="/realisations">
+          <a class="folk-project lab-reveal" href="/realisations/">
             <div><img src={project.image} width={project.width} height={project.height} alt={'Aperçu du projet ' + project.name} loading="lazy" decoding="async" /><span>0{index + 1}</span></div>
             <h3>{project.name}</h3><p>{project.type}<b>↗</b></p>
           </a>
@@ -76,10 +76,10 @@ const projects = [
 
     <section class="folk-profile lab-reveal" id="folk-profil">
       <figure><img src="/images/kevin-barre.jpg" width="350" height="465" alt="Kévin Barré" loading="lazy" decoding="async" /><span>Disponible · Nantes / Remote</span></figure>
-      <div><p class="final-kicker">Le profil / 04</p><h2>Chef de projet,<br />intégrateur,<br />formateur.</h2><p>Un profil hybride habitué à dialoguer avec les directions, les métiers, les créatifs et les équipes techniques.</p><a href="/profil">Découvrir mon parcours ↗</a></div>
+      <div><p class="final-kicker">Le profil / 04</p><h2>Chef de projet,<br />intégrateur,<br />formateur.</h2><p>Un profil hybride habitué à dialoguer avec les directions, les métiers, les créatifs et les équipes techniques.</p><a href="/profil/">Découvrir mon parcours ↗</a></div>
     </section>
 
-    <section class="folk-contact lab-reveal"><div><span>Votre prochain projet</span><i>Disponible</i></div><h2>On met de l’ordre<br />dans vos idées ?</h2><a href="/contact">Oui, parlons-en <b>↗</b></a></section>
-    <footer class="final-footer"><span>Direction 03 — Folk</span><a href="/lab/rejouice">← Voir Rejouice</a><a href="/lab/signature">Voir Signature →</a></footer>
+    <section class="folk-contact lab-reveal"><div><span>Votre prochain projet</span><i>Disponible</i></div><h2>On met de l’ordre<br />dans vos idées ?</h2><a href="/contact/">Oui, parlons-en <b>↗</b></a></section>
+    <footer class="final-footer"><span>Direction 03 — Folk</span><a href="/lab/rejouice/">← Voir Rejouice</a><a href="/lab/signature/">Voir Signature →</a></footer>
   </main>
 </LabLayout>

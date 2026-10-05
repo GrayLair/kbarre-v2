@@ -3,7 +3,7 @@ import type { Locale } from '../data/i18n';
 
 interface Props { compact?: boolean; locale?: Locale; }
 const { compact = false, locale = 'fr' } = Astro.props;
-const href = locale === 'en' ? '/en' : '/';
+const href = locale === 'en' ? '/en/' : '/';
 const label = locale === 'en' ? "Ꝃ'Barré — home" : "Ꝃ'Barré — accueil";
 ---
 
