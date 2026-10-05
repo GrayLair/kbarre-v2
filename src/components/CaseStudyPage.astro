@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from './SectionHeading.astro';
+import type { CaseStudy, CaseStudyLocale } from '../data/case-studies';
+import { caseStudyPath } from '../data/case-studies';
+
+interface Props {
+  study: CaseStudy;
+  locale: CaseStudyLocale;
+}
+
+const { study, locale } = Astro.props;
+const copy = study.copy[locale];
+const category = study.category[locale];
+const role = study.role[locale];
+const isEnglish = locale === 'en';
+const backHref = isEnglish ? '/en/work/' : '/realisations/';
+const contactHref = isEnglish ? '/en/contact/?request=project' : '/contact/?demande=pilotage';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: copy.title,
+  description: copy.summary,
+  creator: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  image: new URL(study.image.src, 'https://kbarre.fr').href,
+  url: new URL(caseStudyPath(locale, study), 'https://kbarre.fr').href,
+  about: category,
+};
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.summary}
+  locale={locale}
+  structuredData={structuredData}
+>
+  <section class="case-study-hero">
+    <div class="shell case-study-hero__grid">
+      <div class="case-study-hero__copy">
+        <a class="case-study-back" href={backHref}>← {copy.backLabel}</a>
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p class="lede">{copy.summary}</p>
+        <div class="case-study-hero__meta">
+          <div><span>{isEnglish ? 'Context' : 'Contexte'}</span><strong>{category}</strong></div>
+          <div><span>{isEnglish ? 'Role' : 'Rôle'}</span><strong>{role}</strong></div>
+          <div><span>{isEnglish ? 'Disclosure' : 'Publication'}</span><strong>{study.disclosure === 'named-public' ? (isEnglish ? 'Named public case' : 'Cas public nominatif') : study.disclosure === 'self-public' ? (isEnglish ? 'Owned public project' : 'Projet propre public') : (isEnglish ? 'Anonymised internal R&D' : 'R&D interne anonymisée')}</strong></div>
+        </div>
+      </div>
+      <figure class="case-study-hero__media">
+        <img
+          src={study.image.src}
+          srcset={study.image.srcset}
+          sizes="(max-width: 900px) 92vw, 44vw"
+          width={study.image.width}
+          height={study.image.height}
+          alt={study.image.alt[locale]}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="shell">
+      <SectionHeading
+        eyebrow={isEnglish ? 'Context' : 'Contexte'}
+        title={copy.contextTitle}
+        text={copy.context}
+        align="split"
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow={isEnglish ? 'Contribution' : 'Contribution'}
+        title={copy.contributionTitle}
+        text={copy.contributionIntro}
+        align="split"
+      />
+      <ol class="process-list">
+        {copy.contribution.map((item, index) => (
+          <li>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{item}</strong>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow={isEnglish ? 'Evidence' : 'Preuve'}
+        title={copy.outcomesTitle}
+        text={isEnglish ? 'Only outcomes that remain supportable at the current disclosure level are included.' : 'Uniquement les éléments qui restent défendables au niveau de preuve actuel sont présentés.'}
+        align="split"
+      />
+      <div class="service-grid">
+        {copy.outcomes.map((item, index) => (
+          <article class="service-card">
+            <span class="service-card__number">{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="shell">
+      <div class="case-study-proof">
+        <p class="eyebrow">{copy.limitsTitle}</p>
+        <h2>{isEnglish ? 'What this page does not claim.' : 'Ce que cette fiche ne prétend pas.'}</h2>
+        <p>{copy.limits}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--purple">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">{isEnglish ? 'A project to make readable' : 'Un projet à rendre lisible'}</p>
+          <h2>{isEnglish ? 'Start with the context, contribution and evidence.' : 'Partons du contexte, de la contribution et de la preuve.'}</h2>
+        </div>
+        <a class="button button--light" href={contactHref}>{isEnglish ? 'Discuss your project' : 'Parler de votre projet'} <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -21,7 +21,9 @@ const isNavActive = (href: string) => {
     (normalizedHref === '/ia-automatisation' && pathname === '/orchestration-agents-ia') ||
     (normalizedHref === '/en/ai-automation' && pathname === '/en/agent-orchestration') ||
     (normalizedHref === '/pilotage-digital' && pathname === '/pilotage-projet-complexe') ||
-    (normalizedHref === '/en/digital-project-management' && pathname === '/en/project-leadership');
+    (normalizedHref === '/en/digital-project-management' && pathname === '/en/project-leadership') ||
+    (normalizedHref === '/realisations' && pathname.startsWith('/realisations/')) ||
+    (normalizedHref === '/en/work' && pathname.startsWith('/en/work/'));
 };
 ---
 
