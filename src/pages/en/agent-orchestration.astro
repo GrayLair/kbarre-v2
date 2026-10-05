@@ -98,7 +98,7 @@ const serviceSchema = {
       />
       <ol class="process-list">
         <li><span>01</span><strong>Identify the boundaries</strong><p>Before distributing work, separate what can evolve independently from what shares a decision, interface or critical data dependency.</p></li>
-        <li><span>02</span><strong>Limit each role’s context</strong><p>An agent receives what its mission requires, not the full project by default. That reduces responsibility mixing and makes review easier.</p></li>
+        <li><span>02</span><strong>Limit each role’s context</strong><p>An agent receives what its mission requires, not the full project by default. This is intended to keep responsibilities readable and make review boundaries more explicit.</p></li>
         <li><span>03</span><strong>Plan convergence</strong><p>The moment workstreams meet is treated as its own step: compatibility, conflicts, understanding gaps and validation.</p></li>
         <li><span>04</span><strong>Escalate what needs judgement</strong><p>An ambiguous dependency or important exception should not be silently “resolved” by an agent. It returns to the appropriate decision boundary.</p></li>
       </ol>
@@ -110,7 +110,7 @@ const serviceSchema = {
       <SectionHeading
         eyebrow="Generation ≠ acceptance"
         title="An agent can produce. It does not self-approve."
-        text="Separating execution from verification is one of the most important safeguards in an agentic system."
+        text="I treat the separation of execution and verification as a central safeguard in an agentic system."
         align="split"
       />
       <div class="service-scope">
@@ -126,7 +126,7 @@ const serviceSchema = {
         </article>
       </div>
       <div class="editorial-copy editorial-copy--night">
-        <p>This distinction reduces a common failure mode: confusing a confident answer with a result that is reliable enough. The control level should remain proportional to the impact of the work.</p>
+        <p>This distinction avoids treating a confident answer as sufficient evidence by default. The control level should remain proportional to the impact of the work.</p>
       </div>
     </div>
   </section>
@@ -206,7 +206,7 @@ const serviceSchema = {
       },
       {
         question: 'Is it always faster?',
-        answer: 'No. Parallel work can reduce waiting time when tasks are independent, but orchestration also adds control and coordination. Value should be evaluated for the use case, not assumed.',
+        answer: 'No. Truly independent work can progress without waiting for other workstreams, but orchestration also adds control and coordination. Value should be evaluated for the use case, not assumed.',
       },
       {
         question: 'Can this approach integrate with existing tools?',

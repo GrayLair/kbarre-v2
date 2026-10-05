@@ -113,7 +113,7 @@ const serviceSchema = {
       />
       <ol class="process-list">
         <li><span>01</span><strong>Identifier les frontières</strong><p>Avant de distribuer le travail, je sépare ce qui peut évoluer indépendamment de ce qui partage une décision, une interface ou une donnée critique.</p></li>
-        <li><span>02</span><strong>Limiter le contexte de chaque rôle</strong><p>Un agent reçoit ce qui est nécessaire à sa mission, pas l’intégralité du projet par défaut. Cela réduit le mélange de responsabilités et facilite la revue.</p></li>
+        <li><span>02</span><strong>Limiter le contexte de chaque rôle</strong><p>Un agent reçoit ce qui est nécessaire à sa mission, pas l’intégralité du projet par défaut. Ce découpage vise à garder les responsabilités lisibles et à rendre la revue plus explicite.</p></li>
         <li><span>03</span><strong>Prévoir la convergence</strong><p>Le moment où les travaux se rejoignent est traité comme une étape à part entière : compatibilité, conflits, écarts de compréhension et validation.</p></li>
         <li><span>04</span><strong>Escalader ce qui exige un arbitrage</strong><p>Une dépendance ambiguë ou une exception importante ne doit pas être “résolue” silencieusement par un agent. Elle revient au niveau de décision approprié.</p></li>
       </ol>
@@ -125,7 +125,7 @@ const serviceSchema = {
       <SectionHeading
         eyebrow="Production ≠ acceptation"
         title="Un agent peut produire. Il ne s’auto-valide pas."
-        text="La séparation entre exécution et vérification est l’un des garde-fous les plus importants d’un système agentique."
+        text="Je traite la séparation entre exécution et vérification comme un garde-fou central d’un système agentique."
         align="split"
       />
       <div class="service-scope">
@@ -141,7 +141,7 @@ const serviceSchema = {
         </article>
       </div>
       <div class="editorial-copy editorial-copy--night">
-        <p>Cette distinction réduit un biais fréquent : confondre une réponse bien formulée avec un résultat suffisamment fiable. Le niveau de contrôle doit rester proportionné à l’impact du travail.</p>
+        <p>Cette distinction évite de traiter une réponse bien formulée comme une preuve suffisante par défaut. Le niveau de contrôle doit rester proportionné à l’impact du travail.</p>
       </div>
     </div>
   </section>
@@ -233,7 +233,7 @@ const serviceSchema = {
       },
       {
         question: 'Est-ce forcément plus rapide ?',
-        answer: 'Non. Le parallèle peut réduire certains temps d’attente lorsque les travaux sont indépendants, mais l’orchestration ajoute aussi du contrôle et de la coordination. La valeur doit être évaluée selon le cas d’usage, pas supposée.',
+        answer: 'Non. Des travaux réellement indépendants peuvent avancer sans attendre les autres, mais l’orchestration ajoute aussi du contrôle et de la coordination. La valeur doit être évaluée selon le cas d’usage, pas supposée.',
       },
       {
         question: 'Peut-on intégrer cette approche aux outils existants ?',
