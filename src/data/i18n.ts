@@ -5,6 +5,7 @@ const englishPaths: Record<string, string> = {
   '/ia-automatisation': '/en/ai-automation',
   '/creation-media-ia': '/en/media-creation-ai',
   '/pilotage-digital': '/en/digital-project-management',
+  '/pilotage-projet-complexe': '/en/project-leadership',
   '/sites-web-premium': '/en/premium-websites',
   '/realisations': '/en/work',
   '/profil': '/en/profile',

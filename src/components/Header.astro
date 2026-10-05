@@ -14,6 +14,9 @@ const switchHref = locale === 'en' ? toFrenchPath(pathname) : toEnglishPath(path
 const contactHref = locale === 'en' ? '/en/contact' : '/contact';
 const contactLabel = locale === 'en' ? 'Let’s talk' : 'Parlons projet';
 const mobileContactLabel = locale === 'en' ? 'Talk about your project ↗' : 'Parlons de votre projet ↗';
+const isNavActive = (href: string) => pathname === href ||
+  (href === '/pilotage-digital' && pathname === '/pilotage-projet-complexe') ||
+  (href === '/en/digital-project-management' && pathname === '/en/project-leadership');
 ---
 
 <header class="site-header">
@@ -21,7 +24,7 @@ const mobileContactLabel = locale === 'en' ? 'Talk about your project ↗' : 'Pa
     <Logo locale={locale} />
     <nav class="desktop-nav" aria-label={locale === 'en' ? 'Main navigation' : 'Navigation principale'}>
       {items.map((item) => (
-        <a class:list={{ active: pathname === item.href }} aria-current={pathname === item.href ? 'page' : undefined} href={item.href}>{item.label}</a>
+        <a class:list={{ active: isNavActive(item.href) }} aria-current={isNavActive(item.href) ? 'page' : undefined} href={item.href}>{item.label}</a>
       ))}
     </nav>
     <div class="header-tools">
@@ -33,7 +36,7 @@ const mobileContactLabel = locale === 'en' ? 'Talk about your project ↗' : 'Pa
       <summary aria-controls="mobile-links"><span>Menu</span><span class="menu-bars" aria-hidden="true"><i></i><i></i></span></summary>
       <nav id="mobile-links" aria-label={locale === 'en' ? 'Mobile navigation' : 'Navigation mobile'}>
         <a href={homeHref} aria-current={pathname === homeHref ? 'page' : undefined}>{locale === 'en' ? 'Home' : 'Accueil'}</a>
-        {items.map((item) => <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</a>)}
+        {items.map((item) => <a href={item.href} aria-current={isNavActive(item.href) ? 'page' : undefined}>{item.label}</a>)}
         <a href={contactHref} aria-current={pathname === contactHref ? 'page' : undefined}>{mobileContactLabel}</a>
       </nav>
     </details>
