@@ -18,6 +18,8 @@ const mobileContactLabel = locale === 'en' ? 'Talk about your project ↗' : 'Pa
 const isNavActive = (href: string) => {
   const normalizedHref = normalizePath(href);
   return pathname === normalizedHref ||
+    (normalizedHref === '/ia-automatisation' && pathname === '/orchestration-agents-ia') ||
+    (normalizedHref === '/en/ai-automation' && pathname === '/en/agent-orchestration') ||
     (normalizedHref === '/pilotage-digital' && pathname === '/pilotage-projet-complexe') ||
     (normalizedHref === '/en/digital-project-management' && pathname === '/en/project-leadership');
 };

@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import SeoFaq from '../../components/SeoFaq.astro';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Human-led multi-agent orchestration',
+  description: 'Design of multi-agent delivery systems with specialised roles, controlled parallel execution, independent verification and explicit human authority.',
+  provider: {
+    '@type': 'Person',
+    name: 'Kévin Barré',
+    url: 'https://kbarre.fr',
+  },
+  areaServed: ['Nantes', 'France', 'Remote'],
+  serviceType: ['AI orchestration', 'AI agents', 'Automation', 'AI-assisted project delivery'],
+};
+---
+
+<BaseLayout
+  title="Human-led multi-agent orchestration"
+  description="Multi-agent orchestration: specialise roles, parallelise what is truly independent, verify results and keep human authority explicit."
+  structuredData={serviceSchema}
+  locale="en"
+>
+  <PageHero
+    eyebrow="Multi-agent orchestration"
+    title="Several agents. One accountable owner."
+    text="A multi-agent system becomes useful when a project contains different kinds of work, contexts and control levels. Agents can execute in parallel; accountability remains human."
+    aside="I treat orchestration as a delivery system: bounded roles, visible dependencies, verification separated from generation and human decisions at the boundaries that matter."
+    ctaHref="/en/contact/?request=ai"
+    ctaLabel="Discuss an agentic system"
+    visual="/images/heroes/ai-automation.png"
+    visualAlt="Interface representing an automation and AI-agent workflow"
+    visualWidth={1122}
+    visualHeight={1402}
+    motif="/images/kit/interface-map.svg"
+  />
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="A different perspective"
+        title="Do not ask one agent to carry every concern."
+        text="Research, implementation, review, documentation and arbitration do not need the same context or the same definition of success."
+        align="split"
+      />
+      <div class="service-grid service-grid--four">
+        <article class="service-card"><span class="service-card__number">01</span><h3>Specialise roles</h3><p>Each agent gets a bounded responsibility and an expected output instead of mixing every concern into one conversation.</p></article>
+        <article class="service-card"><span class="service-card__number">02</span><h3>Parallelise deliberately</h3><p>Truly independent work can move at the same time. Dependencies stay explicit so convergence does not become a late conflict.</p></article>
+        <article class="service-card"><span class="service-card__number">03</span><h3>Separate generation from verification</h3><p>Generated work remains proposed work until it passes the review or validation appropriate to its risk.</p></article>
+        <article class="service-card"><span class="service-card__number">04</span><h3>Keep human authority</h3><p>Objectives, priorities, trade-offs, exceptions and final acceptance remain the responsibility of an identifiable human owner.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted" id="delivery-system">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="A delivery system"
+        title="From objective to decision, every role has a boundary."
+        text="The diagram below is intentionally generic: it communicates the public logic without reproducing any private architecture or coordination contract."
+        align="split"
+      />
+      <figure class="orchestration-map" aria-labelledby="orchestration-map-title">
+        <figcaption id="orchestration-map-title">Generic example of a human-led multi-agent delivery flow.</figcaption>
+        <div class="orchestration-map__owner">
+          <span>Human authority</span>
+          <strong>Objective · priority · acceptance criteria</strong>
+          <p>The decision frame is set before execution is distributed.</p>
+        </div>
+        <div class="orchestration-map__roles" aria-label="Specialised roles">
+          <article><span>Role A</span><strong>Explore</strong><p>Research, compare and identify unknowns.</p></article>
+          <article><span>Role B</span><strong>Produce</strong><p>Implement or create a bounded deliverable.</p></article>
+          <article><span>Role C</span><strong>Verify</strong><p>Review, test or challenge independently.</p></article>
+        </div>
+        <div class="orchestration-map__gate">
+          <span>Convergence</span>
+          <strong>Results compared, dependencies checked, differences made visible</strong>
+        </div>
+        <div class="orchestration-map__decision">
+          <span>Human decision</span>
+          <strong>Accept · request rework · arbitrate the exception</strong>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Parallel work has limits"
+        title="More agents do not automatically mean more speed."
+        text="Parallelisation only creates value when the work is independent enough and convergence is controlled."
+        align="split"
+      />
+      <ol class="process-list">
+        <li><span>01</span><strong>Identify the boundaries</strong><p>Before distributing work, separate what can evolve independently from what shares a decision, interface or critical data dependency.</p></li>
+        <li><span>02</span><strong>Limit each role’s context</strong><p>An agent receives what its mission requires, not the full project by default. That reduces responsibility mixing and makes review easier.</p></li>
+        <li><span>03</span><strong>Plan convergence</strong><p>The moment workstreams meet is treated as its own step: compatibility, conflicts, understanding gaps and validation.</p></li>
+        <li><span>04</span><strong>Escalate what needs judgement</strong><p>An ambiguous dependency or important exception should not be silently “resolved” by an agent. It returns to the appropriate decision boundary.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Generation ≠ acceptance"
+        title="An agent can produce. It does not self-approve."
+        text="Separating execution from verification is one of the most important safeguards in an agentic system."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Execution</p>
+          <h3>Produce a bounded result.</h3>
+          <p>The execution role works on a specific mission: research, code, analysis, documentation or content transformation. Its output remains a candidate for acceptance.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Verification</p>
+          <h3>Check from a different angle.</h3>
+          <p>Depending on the risk, another role can review, test, compare against criteria or look for defects. Validation can be automated, human or a combination of both.</p>
+        </article>
+      </div>
+      <div class="editorial-copy editorial-copy--night">
+        <p>This distinction reduces a common failure mode: confusing a confident answer with a result that is reliable enough. The control level should remain proportional to the impact of the work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Human authority"
+        title="What the human does not delegate."
+        text="Orchestration increases execution surface; it does not move final responsibility into the system."
+        align="split"
+      />
+      <div class="service-grid">
+        <article class="service-card"><span class="service-card__number">A</span><h3>Goals and priorities</h3><p>Deciding what is worth doing, what can wait and which trade-offs are acceptable remains a human responsibility.</p></article>
+        <article class="service-card"><span class="service-card__number">B</span><h3>Exceptions</h3><p>When a situation falls outside the expected frame, escalation is safer than an autonomous improvisation presented as certainty.</p></article>
+        <article class="service-card"><span class="service-card__number">C</span><h3>Acceptance</h3><p>An agent completing a mission does not mean the project should automatically accept its output.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="When orchestration becomes relevant"
+        title="When work has several roles, not just several prompts."
+        text="A single assistant often remains the best choice for an isolated task. Orchestration becomes useful when work must be distributed, controlled and recomposed."
+        align="split"
+      />
+      <div class="service-scope">
+        <article>
+          <p class="eyebrow">Digital product & delivery</p>
+          <h3>Research, implementation, review and documentation.</h3>
+          <p>Several responsibilities can progress in a coordinated way while preserving common control points and acceptance criteria.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Audit & recovery</p>
+          <h3>Explore the existing state without erasing uncertainty.</h3>
+          <p>Different roles can inventory, analyse and challenge an existing state before a modification decision is made.</p>
+        </article>
+      </div>
+      <div class="editorial-copy">
+        <p>I do not present orchestration as a default quantified productivity promise. Its value depends on the work, the quality of decomposition, dependencies and the level of control required.</p>
+        <a class="text-link" href="/en/ai-automation/">Return to the AI & automation offer <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--night">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="What this is not"
+        title="Not a miniature autonomous company."
+        text="Adding agents does not remove governance, dependencies or the need for judgement."
+        align="split"
+      />
+      <ol class="process-list">
+        <li><span>—</span><strong>No automatic acceptance</strong><p>Generated output does not become project truth just because an agent produced it.</p></li>
+        <li><span>—</span><strong>No blind multiplication of agents</strong><p>An additional role should solve an identifiable context, specialisation, control or parallelisation problem.</p></li>
+        <li><span>—</span><strong>No universal speed promise</strong><p>Some work parallelises well; other work is sequential or first requires a human decision.</p></li>
+        <li><span>—</span><strong>No diffuse accountability</strong><p>Objectives and acceptance must remain assigned to a responsible person or organisation.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <SeoFaq
+    eyebrow="Common questions"
+    title="About multi-agent orchestration."
+    intro="The best system is rarely the one with the most agents. It is the one whose roles and controls match the real work."
+    items={[
+      {
+        question: 'How is this different from simply using ChatGPT or another assistant?',
+        answer: 'For an isolated task, one assistant is often enough. Orchestration becomes useful when several responsibilities need different contexts, sometimes work in parallel, and then converge toward shared validation.',
+      },
+      {
+        question: 'Can agents work completely on their own?',
+        answer: 'They can execute bounded missions with different levels of technical autonomy. Goals, important trade-offs, exceptions and acceptance criteria remain under human authority.',
+      },
+      {
+        question: 'Is it always faster?',
+        answer: 'No. Parallel work can reduce waiting time when tasks are independent, but orchestration also adds control and coordination. Value should be evaluated for the use case, not assumed.',
+      },
+      {
+        question: 'Can this approach integrate with existing tools?',
+        answer: 'Yes, when the tools expose suitable interfaces and permissions. The starting point remains the workflow and responsibilities, not adding an agentic layer for its own sake.',
+      },
+    ]}
+  />
+
+  <section class="section section--purple">
+    <div class="shell">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Complex work to distribute</p>
+          <h2>Start by deciding what actually deserves orchestration.</h2>
+        </div>
+        <a class="button button--light" href="/en/contact/?request=ai">Discuss the need <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

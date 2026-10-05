@@ -3,6 +3,7 @@ export type Locale = 'fr' | 'en';
 const englishPaths: Record<string, string> = {
   '/': '/en',
   '/ia-automatisation': '/en/ai-automation',
+  '/orchestration-agents-ia': '/en/agent-orchestration',
   '/creation-media-ia': '/en/media-creation-ai',
   '/pilotage-digital': '/en/digital-project-management',
   '/pilotage-projet-complexe': '/en/project-leadership',
