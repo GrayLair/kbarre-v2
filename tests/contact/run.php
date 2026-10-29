@@ -157,6 +157,19 @@ function concurrent(string $mode): void {
 }
 concurrent('submit');
 concurrent('quota');
+// Maintenance must expire state even when no visitor sends another request.
+[$app, $dir, $file] = setup();
+$app->state->limit('submit', '127.0.0.1', time() - 601);
+$app->state->consume(hash('sha256', 'synthetic-expired-proof'), time() - 1, time() - 601);
+$maintenance = proc_open([PHP_BINARY, $root . '/server/contact/bin/maintain.php', $file, $root . '/public'],
+    [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+fclose($pipes[0]);
+$maintenanceOut = stream_get_contents($pipes[1]); $maintenanceErr = stream_get_contents($pipes[2]);
+fclose($pipes[1]); fclose($pipes[2]);
+check(proc_close($maintenance) === 0 && $maintenanceErr === '', 'scheduled cleanup CLI succeeds');
+$db = new PDO('sqlite:' . $dir . '/contact.sqlite');
+check((int) $db->query('SELECT count(*) FROM counters')->fetchColumn() === 0
+    && (int) $db->query('SELECT count(*) FROM used_proofs')->fetchColumn() === 0, 'cleanup removes expired state without new traffic');
 echo "\n" . $tests . " assertions passed. No real mail was sent.\n";
 // Retain the isolated directory for diagnostics; it contains only synthetic data.
 
