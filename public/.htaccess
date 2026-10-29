@@ -4,6 +4,11 @@
 DirectoryIndex index.html
 Options -Indexes
 
+# Bound contact payloads before PHP parses them. App checks this again.
+<FilesMatch "^contact(?:-challenge|-runtime)?\\.php$">
+  LimitRequestBody 32768
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
