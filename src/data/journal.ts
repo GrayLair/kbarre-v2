@@ -6,11 +6,25 @@ import { practiceEntries } from './journal/practice.ts';
 import { architectureEntries } from './journal/architecture.ts';
 import { newsEntries } from './journal/news.ts';
 import { inspirationByArticle } from './journal/inspiration.ts';
+import { supplementalBusinessEntries } from './journal/supplemental-business.ts';
+import { supplementalAgentsEntries } from './journal/supplemental-agents.ts';
+import { supplementalOperationsEntries } from './journal/supplemental-operations.ts';
+import { supplementalProjectsEntries } from './journal/supplemental-projects.ts';
+import { supplementalEngineeringEntries } from './journal/supplemental-engineering.ts';
+import { supplementalWebEntries } from './journal/supplemental-web.ts';
+import { supplementalMediaEntries } from './journal/supplemental-media.ts';
+import { supplementalSecurityEntries } from './journal/supplemental-security.ts';
 
 export type { JournalCopy, JournalEntry } from './journal-types';
 
 const articles: JournalEntry[] = [
   ...practiceEntries, ...architectureEntries, ...newsEntries, ...existingEntries,
+  ...supplementalBusinessEntries,
+  ...supplementalAgentsEntries,
+  ...supplementalOperationsEntries,
+  ...supplementalProjectsEntries,
+  ...supplementalEngineeringEntries,
+  ...supplementalSecurityEntries, ...supplementalWebEntries, ...supplementalMediaEntries,
 ];
 
 export const journalEntries: JournalEntry[] = articles.map(entry => {

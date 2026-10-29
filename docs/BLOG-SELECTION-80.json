@@ -1,0 +1,104 @@
+{
+  "target": 110,
+  "additional": 80,
+  "preparedAt": "2026-10-29",
+  "baseCommit": "5aeeb3459795a9ccde7d3cd1df7f338e37734999",
+  "groups": [
+    {"id":"business","category":"Entreprise & transformation","articles":[
+      {"id":"ai-first-steps","backlog":"A01","title":"IA en PME : choisir un premier usage sans lancer un grand programme","angle":"Diagnostic initial, périmètre de deux semaines et décision de poursuivre."},
+      {"id":"workflow-before-model","backlog":"A02","title":"Votre stratégie IA commence souvent par un workflow bien défini","angle":"Cartographier entrées, décisions et sorties ; aucune statistique de 80 % présumée."},
+      {"id":"rules-or-generative","backlog":"A03","title":"Règles, automatisation ou IA générative : choisir étape par étape","angle":"Arbre de décision et exemple de traitement d'une demande commerciale."},
+      {"id":"automation-priority-grid","backlog":"A04","title":"Identifier les tâches automatisables avec une grille de priorisation","angle":"Noter fréquence, variabilité, impact et détectabilité de l'erreur ; montrer un classement fictif."},
+      {"id":"train-hire-or-partner","backlog":"A05","title":"Former, recruter ou se faire accompagner pour son projet IA ?","angle":"Compétences requises, charge récurrente et transfert de responsabilité."},
+      {"id":"ai-project-failure","backlog":"A07","title":"Pourquoi un projet IA échoue malgré un bon modèle","angle":"Qualité des données, propriétaire métier et intégration ; diagnostic concret d'un pilote qui stagne."},
+      {"id":"ai-roi-measurement","backlog":"A08","title":"Mesurer le ROI d'un projet IA sans compter deux fois les gains","angle":"Baseline, coût complet et capacité réellement réaffectée ; calcul fictif explicite."},
+      {"id":"useful-project-documents","backlog":"A25","title":"Réunions et documents : garder ceux qui changent une décision","angle":"Choisir entre journal de décision, compte rendu et tableau de suivi ; exemple de rituel."},
+      {"id":"ten-office-automations","backlog":"B03","title":"Dix tâches de bureau à automatiser, avec leurs points de contrôle","angle":"Dix usages concrets distincts, seuils d'escalade et exclusions, pas une liste de promesses."},
+      {"id":"practical-ai-training","backlog":"B14","title":"Former une équipe à l'IA avec des exercices de travail réels","angle":"Séance pratique, vérification et mesure d'apprentissage ; différent du choix former/recruter."}
+    ]},
+    {"id":"agents","category":"Agents & automatisation","articles":[
+      {"id":"agent-or-chatbot","backlog":"A09","title":"Agent IA ou chatbot : ce que change la boucle d'action","angle":"Outils, état, arrêt et résultat ; expliquer un traitement de demande."},
+      {"id":"delegating-whole-project","backlog":"A10","title":"Confier un projet entier à une IA : définir les responsabilités avant les tâches","angle":"Mandat, budgets et points d'acceptation d'un projet borné, sans récit personnel inventé."},
+      {"id":"multi-agent-contracts","backlog":"A11","title":"Faire collaborer plusieurs agents avec des contrats de passage clairs","angle":"Entrées, sorties, dépendances et coût de coordination ; quand un seul agent suffit."},
+      {"id":"independent-ai-review","backlog":"A12/A40/B09","title":"Un agent peut-il relire un autre agent de façon indépendante ?","angle":"Indépendance de contexte, critères et preuves externes ; limites d'erreurs corrélées."},
+      {"id":"supervision-boundaries","backlog":"A13/B06","title":"Superviser une automatisation : décider avant l'action ce qui exige une validation","angle":"Matrice d'impacts et transitions, reprise et révocation, sans répéter l'article computer-use."},
+      {"id":"agent-memory-design","backlog":"A14","title":"Mémoire d'un agent : quoi conserver, pendant combien de temps et pour qui ?","angle":"État de mission, faits sourcés, péremption et droits ; différent du cache de tokens."},
+      {"id":"agent-task-reservations","backlog":"A15","title":"Éviter que deux agents traitent la même tâche","angle":"Réservation, bail, idempotence et récupération après panne sur un exemple fictif."},
+      {"id":"automated-development-cycle","backlog":"A16","title":"Automatiser le cycle logiciel : de la demande à une intégration vérifiée","angle":"Chaîne complète, preuve par étape, arrêt et reprise ; pas de promesse d'autonomie totale."},
+      {"id":"shadow-testing-ai","backlog":"A23","title":"A/B test et mode shadow : évaluer une IA avant de lui confier les actions","angle":"Échantillonnage, comparaison, confidentialité et limites du shadow sans effets réels."},
+      {"id":"skills-from-work-history","backlog":"A24","title":"Transformer des historiques de travail en propositions de skills","angle":"Extraction de motifs autorisés, anonymisation, validation humaine et promotion après évaluation."}
+    ]},
+    {"id":"operations","category":"Exploitation & R&D","articles":[
+      {"id":"skill-evaluation-protocol","backlog":"A20","title":"Un skill améliore-t-il l'agent ? Construire une comparaison contrôlée","angle":"Activation, réussite, coût et régressions ; protocole différent de la rédaction d'un skill."},
+      {"id":"technology-watch-catalogue","backlog":"A58","title":"Organiser sa veille : un catalogue de décisions plutôt qu'une collection d'outils","angle":"Dates, critères d'entrée et de sortie, revue de pertinence et archivage."},
+      {"id":"agent-framework-selection","backlog":"A59","title":"Comparer les frameworks d'agents sans se limiter à leur démonstration","angle":"État, reprise, observabilité, compatibilité et verrouillage ; comparer des capacités documentées."},
+      {"id":"logs-to-decisions","backlog":"A61","title":"Transformer les logs en décisions d'exploitation","angle":"Événements structurés, corrélation, confidentialité et hypothèses d'incident testables."},
+      {"id":"agent-field-reliability","backlog":"A62","title":"Évaluer un agent en conditions réelles : réussite, reprises et supervision","angle":"Mesure d'un service dans la durée, dérive et observabilité ; différent du classement de benchmarks."},
+      {"id":"workflow-analytics-ml","backlog":"A63","title":"Analyser les habitudes de travail avec le machine learning sans surveiller les personnes","angle":"Données agrégées, finalité et biais ; distinguer diagnostic de processus et score individuel."},
+      {"id":"personal-ai-lab","backlog":"A64","title":"Monter un laboratoire IA reproductible avec des moyens limités","angle":"Environnement isolé, jeux de données synthétiques, versions et carnet d'essais."},
+      {"id":"agent-loop-recovery","backlog":"B08","title":"Quand un agent boucle ou abandonne : diagnostiquer avant de relancer","angle":"Budgets d'étapes, état retenu, erreurs d'outil et conditions d'arrêt ; runbook générique."},
+      {"id":"agent-instruction-portability","backlog":"B10","title":"Codex, Claude et Copilot : ce qui se transporte et ce qui doit être retesté","angle":"Instructions, skills, outils et permissions ; ne pas confondre format partagé et comportement identique."},
+      {"id":"skill-library-curation","backlog":"B11","title":"Pourquoi une bibliothèque de skills doit aussi savoir supprimer","angle":"Inventaire, déclencheurs en conflit, versions et retrait ; aucune mesure de benchmark inventée."}
+    ]},
+    {"id":"projects","category":"Pilotage & livraison","articles":[
+      {"id":"work-package-contract","backlog":"A26","title":"Work Package : rendre une mission vérifiable avant son démarrage","angle":"Exemple de périmètre, livrables, dépendances et critères d'acceptation."},
+      {"id":"agile-scrum-kanban-choice","backlog":"A27","title":"Scrum, Kanban ou une organisation plus simple : choisir selon le travail","angle":"Comparaison contextualisée des cadences, flux et rôles, pas de méthode gagnante universelle."},
+      {"id":"project-task-decomposition","backlog":"A28","title":"Découper un projet en unités que l'on peut réellement accepter","angle":"Du besoin à une tranche livrable ; exemple et distinction niveaux de backlog non universels."},
+      {"id":"work-in-progress-limits","backlog":"A29/B16","title":"Limiter le travail en cours pour terminer davantage de sujets","angle":"Files d'attente, dépendances et capacité de revue ; exemple chiffré fictif."},
+      {"id":"project-recovery-diagnostic","backlog":"A30/B19","title":"Reprendre un projet en difficulté : les premières décisions qui comptent","angle":"État factuel, contraintes, options de sauvetage et critères d'arrêt."},
+      {"id":"external-mission-brief","backlog":"A31","title":"Rédiger une mission externe qui évite les malentendus","angle":"Expression du besoin, hypothèses, interfaces et sélection du prestataire ; différent du Work Package livré."},
+      {"id":"hybrid-team-accountability","backlog":"A32","title":"Humains et agents dans un même projet : qui répond du résultat ?","angle":"Rôles, délégation, passage de relais et arbitrages métier, sans manuel d'orchestration privé."},
+      {"id":"pull-request-queue","backlog":"A33","title":"Trop de Pull Requests ouvertes : traiter la file de revue","angle":"Âge des changements, taille, capacité de revue et intégration ; guide d'assainissement."},
+      {"id":"epic-branch-tradeoffs","backlog":"A34","title":"Une branche par Epic : isoler le travail sans différer tous les conflits","angle":"Comparer intégration progressive et branche longue ; protections et critères de fin génériques."},
+      {"id":"github-project-traceability","backlog":"A39/B20","title":"Relier Issues, Projects et Pull Requests pour piloter avec des faits","angle":"Traçabilité minimum, statuts et automatisations sans multiplier les tickets."}
+    ]},
+    {"id":"engineering","category":"Architecture & développement","articles":[
+      {"id":"risk-based-ci","backlog":"A35/A36","title":"Accélérer sa CI avec une stratégie de tests fondée sur le risque","angle":"Dépendances, sélection, garde-fous et validations larges ; ne jamais assimiler rapide à fiable."},
+      {"id":"flaky-tests-diagnosis","backlog":"A37","title":"Tests instables : distinguer défaut du produit et défaut de l'environnement","angle":"Isolation, temps, réseau et reproduction ; ne pas masquer automatiquement les échecs."},
+      {"id":"ci-evidence-reuse","backlog":"A38","title":"Réutiliser un résultat de CI : le SHA ne suffit pas toujours","angle":"Arbre source, environnement, dépendances, permissions et provenance de la preuve."},
+      {"id":"abstraction-levels-ai","backlog":"A49","title":"Haut niveau, bas niveau : les abstractions restent utiles avec l'IA","angle":"Coût d'un contrat, mémoire, runtime et diagnostic ; différent du choix de langage et de l'assembleur."},
+      {"id":"c-cpp-csharp-differences","backlog":"A50","title":"C, C++ et C# : trois modèles d'exécution derrière des noms voisins","angle":"Mémoire, types, runtime et cas d'usage avec un exemple comparable."},
+      {"id":"cpp-lifetime-ai","backlog":"A51","title":"Pourquoi le C++ reste exigeant avec un assistant IA","angle":"Durée de vie, ownership, comportement indéfini et outils de diagnostic."},
+      {"id":"go-backend-services","backlog":"A53","title":"Go pour un service backend : où sa simplicité aide et où elle ne suffit pas","angle":"Concurrence, contexte, erreurs, profilage et déploiement d'un service fictif."},
+      {"id":"polling-events-sse","backlog":"A54","title":"Polling, événements et SSE : choisir le bon mode de communication","angle":"Latence, reprise, sens de communication et charge ; exemples HTTP concrets."},
+      {"id":"reliable-async-systems","backlog":"A55","title":"Concevoir un traitement asynchrone qui supporte les doublons et les pannes","angle":"Idempotence, livraison, reprises et messages en échec ; exemple de commande métier."},
+      {"id":"sqlite-wal-concurrency","backlog":"A56","title":"SQLite, WAL et SHM : ce que la concurrence change vraiment","angle":"Lecteurs, écrivain, checkpoints, sauvegarde cohérente et limites du stockage partagé."}
+    ]},
+    {"id":"security","category":"Sécurité & fiabilité","articles":[
+      {"id":"infostealers-user-rights","backlog":"A41","title":"Vol de mots de passe : un malware n'a pas toujours besoin des droits administrateur","angle":"Données accessibles à la session, limites des protections et gestes défensifs sans recette d'attaque."},
+      {"id":"dns-filtering-limits","backlog":"A42","title":"DNS filtrant : ce qu'il protège et ce qu'il laisse passer","angle":"Résolution, domaines malveillants, confidentialité et limites des changements de résolveur."},
+      {"id":"windows-uac-boundaries","backlog":"A43","title":"Windows UAC : comprendre ce que valide la demande administrateur","angle":"Jetons, élévation et données utilisateur ; différent du diagnostic d'infostealer."},
+      {"id":"windows-file-sharing","backlog":"A45","title":"Deux PC sur le même réseau : pourquoi le partage de fichiers échoue encore","angle":"Chemin de diagnostic SMB, profils, comptes et permissions sans ouvrir tout le réseau."},
+      {"id":"automation-hosting-choice","backlog":"A46","title":"Héberger ses automatisations chez soi ou dans le cloud ?","angle":"Disponibilité, maintenance, connectivité et coût complet ; différent du choix modèle local/hébergé."},
+      {"id":"local-service-exposure","backlog":"A48","title":"Exposer un service local sans exposer tout son poste","angle":"Architecture tunnel/proxy, identité, restriction d'accès et révocation ; aucun déploiement effectué."},
+      {"id":"hidden-website-compromise","backlog":"B23","title":"Une page d'accueil normale peut cacher un site compromis","angle":"Signaux de spam SEO, fichiers, comptes et indexation ; procédure de diagnostic défensif générique."},
+      {"id":"credential-theft-response","backlog":"B24","title":"Vol d'identifiants : organiser les premières mesures de réponse","angle":"Canal sain, sessions, récupération et préservation des informations ; distinguer mesures et investigation."},
+      {"id":"ocr-automation-quality","backlog":"B12","title":"Automatiser une application sans API : rendre l'OCR contrôlable","angle":"Capture, zones, association, seuils et confirmation sur un exemple de saisie générique autorisé."},
+      {"id":"ai-answer-verification","backlog":"B13","title":"Une réponse assurée n'est pas une preuve : vérifier les données d'une IA","angle":"Provenance, ambiguïtés, unités et abstention ; exemple documentaire sans récit personnel."}
+    ]},
+    {"id":"web","category":"Web & communication","articles":[
+      {"id":"owned-website-value","backlog":"A65","title":"Site professionnel, réseaux sociaux et IA : quel rôle pour chaque canal ?","angle":"Maîtrise des contenus, dépendance aux plateformes et point de conversion ; éviter le discours site indispensable universel."},
+      {"id":"wordpress-custom-nocode","backlog":"A66","title":"WordPress, sur-mesure ou no-code : comparer la capacité de l'entreprise à exploiter le site","angle":"Administration, contraintes, sortie et coûts de maintenance ; différent CMS/statique."},
+      {"id":"redesign-business-outcomes","backlog":"A67","title":"Pourquoi changer le design ne suffit pas à faire mieux fonctionner un site","angle":"Hypothèses de parcours, accessibilité, messages et mesures ; pas de résultat de conversion inventé."},
+      {"id":"seo-ai-discovery","backlog":"A68","title":"SEO et recherche par IA : travailler la découvrabilité sans promesse magique","angle":"Contenu utile, accès technique, citations et mesure ; documentation moteurs à jour."},
+      {"id":"content-automation-editorial","backlog":"A69","title":"Automatiser la production de contenu en conservant une vraie ligne éditoriale","angle":"Brief, dossier de sources, apport original et contrôle des doublons ; pas une incitation au volume vide."},
+      {"id":"small-business-digital-audit","backlog":"A70","title":"Un audit numérique de PME qui débouche sur des décisions","angle":"Inventaire, parcours, données, sécurité et plan de trois priorités."},
+      {"id":"tool-integration-silos","backlog":"A71","title":"Trop d'outils, trop de doubles saisies : réparer les échanges avant d'en ajouter","angle":"Source de vérité, identifiants, erreurs de synchronisation et responsabilités."},
+      {"id":"website-commercial-workflow","backlog":"A72","title":"Faire du site un outil commercial : du formulaire au suivi de la demande","angle":"Qualification proportionnée, CRM, attribution, réponse et suivi sans collecte excessive."},
+      {"id":"seo-migration-controls","backlog":"B22","title":"Refondre un site : préparer la migration SEO et surveiller les écarts","angle":"Inventaire URLs, redirections, canoniques, sitemap et suivi ; aucune promesse de trafic stable."},
+      {"id":"headless-wordpress-tradeoffs","backlog":"B25","title":"WordPress headless : quand séparer l'édition et le front vaut son coût","angle":"Prévisualisation, routage, blocs, authentification et double exploitation."}
+    ]},
+    {"id":"media","category":"Création & médias","articles":[
+      {"id":"ai-music-creative-role","backlog":"A73/B29","title":"Musique générative : où reste le travail de composition ?","angle":"Intention, sélection, structure et arrangement ; critique de workflow, pas verdict artistique universel."},
+      {"id":"creativity-tool-mastery","backlog":"A74","title":"Créer sans tout maîtriser : les compétences qui comptent avec l'IA","angle":"Intention, perception, critique et apprentissage ; exercice concret de comparaison."},
+      {"id":"hybrid-music-production","backlog":"A75","title":"Du morceau généré à une session de production musicale exploitable","angle":"Suno, stems, tempo, DAW et export ; vérifier capacités et droits, aucun abonnement supposé."},
+      {"id":"ai-video-production","backlog":"A76","title":"Intégrer l'IA à une production vidéo sans perdre le fil éditorial","angle":"Script, storyboard, montage, son et validation de continuité ; pas promesse de tournage remplacé."},
+      {"id":"art-direction-decisions","backlog":"A77","title":"Direction artistique : choisir une intention et tenir ses contraintes","angle":"Critères de choix, cohérence et arbitrage entre variantes, au-delà du prompt d'image."},
+      {"id":"ai-brand-identity-workflow","backlog":"A78/B27","title":"Créer une identité visuelle avec l'IA : du brief à un système utilisable","angle":"Références autorisées, couleurs, typographie, variantes et validation, sans promettre exclusivité juridique."},
+      {"id":"multimedia-brief-to-release","backlog":"A79","title":"D'une idée à une campagne multimédia : organiser les passages entre formats","angle":"Brief commun, dépendances texte-image-son, validations et dossier de livraison."},
+      {"id":"ai-works-rights-checks","backlog":"A80","title":"Œuvres et IA : les questions de droits à poser avant diffusion","angle":"Distinguer droit applicable France/UE, apport humain, contrat de service et droits de tiers ; sources officielles obligatoires."},
+      {"id":"real-or-generated-photos","backlog":"B28","title":"Photos réelles ou images générées pour un site professionnel ?","angle":"Vérité de la représentation, consentement, cohérence et contexte d'usage ; pas simple comparatif de prix."},
+      {"id":"brand-asset-library","backlog":"B30","title":"Décliner sa marque sur le Web et les réseaux avec une bibliothèque de médias","angle":"Formats, recadrages, OpenGraph, accessibilité, versions et droits ; livrables concrets."}
+    ]}
+  ]
+}

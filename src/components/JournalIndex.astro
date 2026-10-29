@@ -17,19 +17,19 @@ const formatDate = (date: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-
 <BaseLayout
   locale={locale}
   robots={visibleJournalEntries.some(isJournalPublished) ? undefined : 'noindex,follow'}
-  title={en ? 'Blog · AI, project delivery and websites' : 'Blog · IA, pilotage de projet et Web'}
-  description={en ? 'Practical notes by Kévin Barré on human-led AI, project continuity and website redesign.' : 'Les notes de terrain de Kévin Barré : IA sous contrôle humain, continuité des projets et refonte Web.'}
+  title={en ? 'Blog · AI, projects, websites and creative work' : 'Blog · IA, projets, Web et création'}
+  description={en ? 'Sourced analysis and practical methods by Kévin Barré on AI, project delivery, software, security, websites and creative work.' : 'Analyses sourcées et méthodes de Kévin Barré : IA, pilotage, développement, sécurité, Web et création.'}
 >
   <PageHero
     eyebrow={en ? 'Blog · Field notes' : 'Blog · Notes de terrain'}
     title={en ? 'From practice to useful questions.' : 'De la pratique aux bonnes questions.'}
-    text={en ? 'Sourced analysis and practical guidance for teams building with AI: craftsmanship, products, costs and technical choices. Each article offers a concrete starting point for your own decisions.' : 'Des analyses sourcées et des repères de pratique pour les équipes qui construisent avec l’IA : savoir-faire, produits, coûts et choix techniques. Chaque article propose un point de départ concret pour vos décisions.'}
+    text={en ? 'Sourced analysis, practical methods and worked examples for decisions about AI, teams, software, security, websites and creative work.' : 'Des analyses sourcées, des méthodes et des exemples pour décider : IA, organisation, développement, sécurité, Web et création.'}
   />
   <section class="section section--muted" aria-label={en ? 'Latest articles' : 'Derniers articles'}>
     <div class="shell" data-journal-browser data-locale={locale}>
       {visibleJournalEntries.length > 0 && <>
         <form class="journal-filters" data-journal-controls hidden role="search">
-          <div><label for="journal-search">{en ? 'Find an article' : 'Trouver un article'}</label><input id="journal-search" type="search" name="q" placeholder={en ? 'Caching, management, CMS…' : 'Caching, management, CMS…'} autocomplete="off" /></div>
+          <div><label for="journal-search">{en ? 'Find an article' : 'Trouver un article'}</label><input id="journal-search" type="search" name="q" placeholder={en ? 'Agents, SEO, music…' : 'Agents, SEO, musique…'} autocomplete="off" /></div>
           <div><label for="journal-category">{en ? 'Topic' : 'Thème'}</label><select id="journal-category" name="category"><option value="">{en ? 'All topics' : 'Tous les thèmes'}</option>{categories.map(category => <option value={category}>{category}</option>)}</select></div>
           <button class="button button--outline" type="button" data-journal-reset>{en ? 'Reset' : 'Réinitialiser'}</button>
         </form>

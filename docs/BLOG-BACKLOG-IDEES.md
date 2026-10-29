@@ -2,7 +2,7 @@
 
 Propositions fournies par Kévin le 29 octobre 2026, en complément de la [liste initiale](BLOG-ROADMAP-30.md). Ce document conserve les titres, angles, priorités et options de ligne éditoriale pour nourrir la suite du blog.
 
-Les identifiants **A01–A80** et **B01–B30** préservent les deux numérotations d’origine. Il s’agit de **110 propositions**, avec des recoupements, et non de 110 articles distincts commandés ou validés. Le livrable en cours reste le [catalogue de 30 articles FR/EN](BLOG-CATALOGUE-30.md).
+Les identifiants **A01–A80** et **B01–B30** préservent les deux numérotations d’origine. Il s’agit de **110 propositions**, avec des recoupements ; elles ne correspondent pas mécaniquement à 110 textes distincts. Après le [catalogue de 30 articles FR/EN](BLOG-CATALOGUE-30.md), Kévin a demandé 80 articles supplémentaires : la [nouvelle sélection](BLOG-SELECTION-80.json) choisit et reformule leurs angles pour limiter les doublons, avec une [recherche préalable](research/BLOG-110-SYNTHESE.md).
 
 ## Statut et provenance
 
