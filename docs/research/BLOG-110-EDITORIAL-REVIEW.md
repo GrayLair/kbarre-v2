@@ -1,7 +1,7 @@
 # Revue éditoriale — extension du blog à 110 articles
 
-Date : 29 octobre 2026  
-Dépôt examiné : `kbarre-blog110-review-20261029`  
+Date : 29 octobre 2026
+Dépôt examiné : `kbarre-blog110-review-20261029`
 État : avis éditorial de préparation, les 80 nouveaux articles restent au statut `review`.
 
 ## Verdict

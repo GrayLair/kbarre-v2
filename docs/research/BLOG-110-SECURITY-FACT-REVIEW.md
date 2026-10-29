@@ -1,7 +1,7 @@
 # Revue factuelle — articles sécurité, lot 110
 
-Date de vérification : 29 octobre 2026  
-Dépôt : `kbarre-blog110-review-20261029`  
+Date de vérification : 29 octobre 2026
+Dépôt : `kbarre-blog110-review-20261029`
 Périmètre : six IDs, versions FR et EN des articles de `supplemental-security.ts` et `supplemental-web.ts`.
 
 ## Verdict

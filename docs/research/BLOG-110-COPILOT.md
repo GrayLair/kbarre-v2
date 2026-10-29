@@ -1,6 +1,6 @@
 # BLOG-110 — Recherche Microsoft Copilot : recommandations officielles pour les agents
 
-Date de recherche : 29 octobre 2026  
+Date de recherche : 29 octobre 2026
 Périmètre : recommandations officielles Microsoft, réparties entre agents déclaratifs Microsoft 365 Copilot, agents Copilot Studio et GitHub Copilot dans VS Code. Comparaison ciblée avec les recommandations officielles d’OpenAI et d’Anthropic. Les discussions Reddit servent à faire remonter des difficultés ou des ressources, pas à établir une performance générale.
 
 ## Synthèse des angles éditoriaux

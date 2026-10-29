@@ -1,6 +1,6 @@
 # Revue factuelle indépendante — sélection BLOG-110
 
-Date de revue : 2026-10-29  
+Date de revue : 2026-10-29
 Périmètre : huit articles complets FR/EN, modules `supplemental-*.ts` indiqués par la demande. Lecture des deux versions et vérification d’affirmations critiques contre des sources primaires/officielles. Ce rapport est une vérification ciblée, pas une certification exhaustive de chaque phrase ni un avis juridique.
 
 ## Verdict
