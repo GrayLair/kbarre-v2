@@ -45,7 +45,7 @@ export function setupContactForms(): void {
       if (busy || !form.reportValidity()) return;
       busy = true;
       button.disabled = true;
-      form.setAttribute('aria-busy', 'true');
+      button.setAttribute('aria-busy', 'true');
       let submitted = false;
       let timer: ReturnType<typeof setTimeout> | undefined;
       try {
@@ -89,14 +89,14 @@ export function setupContactForms(): void {
           if (typeof widget.reset === 'function') widget.reset();
           busy = false;
           button.disabled = false;
-          form.removeAttribute('aria-busy');
+          button.removeAttribute('aria-busy');
         }
       }
     });
     window.addEventListener('pageshow', (event) => {
       if (event.persisted) {
         busy = false; navigating = false; button.disabled = false;
-        form.removeAttribute('aria-busy');
+        button.removeAttribute('aria-busy');
         if (typeof widget.reset === 'function') widget.reset();
       }
     });
