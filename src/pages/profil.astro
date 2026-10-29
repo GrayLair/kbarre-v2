@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import PracticeNotes from '../components/PracticeNotes.astro';
 
 const experience = [
   {
@@ -63,7 +64,7 @@ const expertise = [
     eyebrow="Kévin Barré · Le parcours"
     title="Une pratique numérique, technique et créative."
     text="Développeur, chef de projet, consultant, compositeur et praticien de l’IA : plus de quinze ans à relier les besoins, les outils et les formes que prennent les projets."
-    ctaHref="/contact"
+    ctaHref="/contact/"
     ctaLabel="Parler d’une collaboration"
     visual="/images/heroes/profile-kevin.png"
     visualAlt="Portrait de Kévin Barré"
@@ -138,7 +139,7 @@ const expertise = [
           <p>La création accompagnée par IA, notamment musicale avec Suno, permet d’explorer rapidement des directions. Le choix des essais, la direction artistique et la recherche de cohérence restent au centre du travail.</p>
         </article>
       </div>
-      <a class="text-link" href="/creation-media-ia">Voir l’approche création média <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="/creation-media-ia/">Voir l’approche création média <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -168,9 +169,10 @@ const expertise = [
           <p class="eyebrow">Travailler ensemble</p>
           <h2>Un projet qui demande à la fois du fond et de la forme ?</h2>
         </div>
-        <a class="button button--light" href="/contact">Me contacter <span aria-hidden="true">↗</span></a>
+        <a class="button button--light" href="/contact/">Me contacter <span aria-hidden="true">↗</span></a>
       </div>
       <p class="profile-recruiter-note">Vous évaluez un profil pour une mission ou un poste ? Retrouvez le parcours détaillé ci-dessus, ou <a href="https://www.linkedin.com/in/k%C3%A9vin-barr%C3%A9-324610148/" target="_blank" rel="noopener noreferrer">consultez LinkedIn ↗</a>.</p>
     </div>
   </section>
+  <PracticeNotes focus="profile" />
 </BaseLayout>

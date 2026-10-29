@@ -1,0 +1,10 @@
+---
+import JournalArticle from '../../../components/JournalArticle.astro';
+import { visibleJournalEntries } from '../../../data/journal';
+
+export function getStaticPaths() {
+  return visibleJournalEntries.map(entry => ({ params: { slug: entry.copy.en.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+---
+<JournalArticle entry={entry} locale="en" />

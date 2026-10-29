@@ -1,18 +1,30 @@
+import { journalEntries, journalPath } from './journal';
+
 export type Locale = 'fr' | 'en';
 
 const englishPaths: Record<string, string> = {
   '/': '/en',
   '/ia-automatisation': '/en/ai-automation',
+  '/orchestration-agents-ia': '/en/agent-orchestration',
   '/creation-media-ia': '/en/media-creation-ai',
   '/pilotage-digital': '/en/digital-project-management',
+  '/pilotage-projet-complexe': '/en/project-leadership',
   '/sites-web-premium': '/en/premium-websites',
   '/realisations': '/en/work',
+  '/realisations/romy-paris': '/en/work/romy-paris',
+  '/realisations/turgis-capital': '/en/work/turgis-capital',
+  '/realisations/kbarre-v2': '/en/work/kbarre-v2',
+  '/realisations/orchestration-multi-agents-rd': '/en/work/multi-agent-orchestration-rd',
   '/profil': '/en/profile',
   '/contact': '/en/contact',
   '/consultant-digital-nantes': '/en/digital-consultant-nantes',
   '/merci': '/en/thank-you',
   '/mentions-legales': '/en/legal-notice',
   '/confidentialite': '/en/privacy',
+  '/blog': '/en/blog',
+  ...Object.fromEntries(journalEntries.map(entry => [
+    journalPath(entry, 'fr').replace(/\/$/, ''), journalPath(entry, 'en').replace(/\/$/, ''),
+  ])),
 };
 
 const frenchPaths = Object.fromEntries(

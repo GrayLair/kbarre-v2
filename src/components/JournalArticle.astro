@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { visibleJournalEntries, journalPath, journalDocuments, isJournalPublished, readingMinutes, type JournalEntry } from '../data/journal';
+import type { Locale } from '../data/i18n';
+
+interface Props { entry: JournalEntry; locale?: Locale; }
+const { entry, locale = 'fr' } = Astro.props;
+const copy = entry.copy[locale];
+const document = journalDocuments(entry, locale);
+const published = isJournalPublished(entry);
+const en = locale === 'en';
+const indexPath = en ? '/en/blog/' : '/blog/';
+const date = new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-FR', { dateStyle: 'long', timeZone: 'UTC' })
+  .format(new Date(`${entry.publishedAt ?? entry.preparedAt}T00:00:00Z`));
+const url = new URL(journalPath(entry, locale), site.url).href;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: copy.title,
+  description: copy.description,
+  datePublished: entry.publishedAt,
+  author: { '@type': 'Person', name: site.person, url: new URL(en ? '/en/profile/' : '/profil/', site.url).href },
+  mainEntityOfPage: url,
+  url,
+  inLanguage: locale,
+  image: new URL('/social-cover.svg', site.url).href,
+};
+---
+
+<BaseLayout title={document.seoTitle ?? document.title} description={document.seoDescription} structuredData={published ? schema : undefined} locale={locale} ogType="article" publishedTime={schema.datePublished} robots={document.noindex ? 'noindex,nofollow' : undefined}>
+  <article class="journal-article shell">
+    <header class="journal-article__header">
+      <a class="text-link" href={indexPath}>← {en ? 'All articles' : 'Tous les articles'}</a>
+      <p class="eyebrow">{copy.category}</p>
+      <h1>{copy.title}</h1>
+      {!published && <p class="journal-review">{en ? 'Editorial preview — awaiting final review.' : 'Prévisualisation éditoriale — en attente de relecture finale.'}</p>}
+      <p class="journal-meta">{site.person} · <time datetime={entry.publishedAt ?? entry.preparedAt}>{date}</time> · {readingMinutes(copy)} min {en ? 'read' : 'de lecture'}</p>
+      <p class="lede">{copy.introduction}</p>
+    </header>
+    <nav class="journal-contents" aria-label={en ? 'On this page' : 'Sommaire de l’article'}>
+      <p class="eyebrow">{en ? 'On this page' : 'Dans cet article'}</p>
+      <ol>{copy.sections.map((section, i) => <li><a href={`#section-${i + 1}`}>{section.title}</a></li>)}</ol>
+    </nav>
+    <div class="journal-body">
+      {copy.sections.map((section, i) => <section id={`section-${i + 1}`}>
+        <h2>{section.title}</h2>
+        {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+        {section.checklist && <ul>{section.checklist.map(item => <li>{item}</li>)}</ul>}
+      </section>)}
+      <aside class="journal-takeaway">
+        <h2>{en ? 'A first step for your project' : 'Un premier pas pour votre projet'}</h2>
+        <p>{copy.takeaway}</p>
+        <a class="text-link" href={copy.service.href}>{copy.service.label} <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+  </article>
+  <section class="section section--muted" aria-labelledby="related-articles">
+    <div class="shell">
+      <h2 id="related-articles">{en ? 'Continue reading' : 'Poursuivre la lecture'}</h2>
+      <ul class="journal-related">{visibleJournalEntries.filter(other => other.id !== entry.id).map(other =>
+        <li><a class="text-link" href={journalPath(other, locale)}>{other.copy[locale].title} <span aria-hidden="true">↗</span></a></li>
+      )}</ul>
+    </div>
+  </section>
+</BaseLayout>
