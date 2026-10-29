@@ -23,7 +23,9 @@ const isNavActive = (href: string) => {
     (normalizedHref === '/pilotage-digital' && pathname === '/pilotage-projet-complexe') ||
     (normalizedHref === '/en/digital-project-management' && pathname === '/en/project-leadership') ||
     (normalizedHref === '/realisations' && pathname.startsWith('/realisations/')) ||
-    (normalizedHref === '/en/work' && pathname.startsWith('/en/work/'));
+    (normalizedHref === '/en/work' && pathname.startsWith('/en/work/')) ||
+    (normalizedHref === '/blog' && pathname.startsWith('/blog/')) ||
+    (normalizedHref === '/en/blog' && pathname.startsWith('/en/blog/'));
 };
 ---
 

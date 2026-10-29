@@ -17,6 +17,7 @@ export const navigation = [
   { href: '/pilotage-digital/', label: 'Pilotage de projet' },
   { href: '/sites-web-premium/', label: 'Sites Web' },
   { href: '/realisations/', label: 'Réalisations' },
+  { href: '/blog/', label: 'Blog' },
 ];
 
 export const navigationEn = [
@@ -25,6 +26,7 @@ export const navigationEn = [
   { href: '/en/digital-project-management/', label: 'Project management' },
   { href: '/en/premium-websites/', label: 'Websites' },
   { href: '/en/work/', label: 'Work' },
+  { href: '/en/blog/', label: 'Blog' },
 ];
 
 export const capabilities = [

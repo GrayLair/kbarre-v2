@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import { visibleJournalEntries, journalPath, readingMinutes, isJournalPublished } from '../data/journal';
+import type { Locale } from '../data/i18n';
+
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
+const en = locale === 'en';
+const formatDate = (date: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-FR', {
+  dateStyle: 'long', timeZone: 'UTC',
+}).format(new Date(`${date}T00:00:00Z`));
+---
+
+<BaseLayout
+  locale={locale}
+  robots={visibleJournalEntries.some(isJournalPublished) ? undefined : 'noindex,follow'}
+  title={en ? 'Blog · AI, project delivery and websites' : 'Blog · IA, pilotage de projet et Web'}
+  description={en ? 'Practical notes by Kévin Barré on human-led AI, project continuity and website redesign.' : 'Les notes de terrain de Kévin Barré : IA sous contrôle humain, continuité des projets et refonte Web.'}
+>
+  <PageHero
+    eyebrow={en ? 'Blog · Field notes' : 'Blog · Notes de terrain'}
+    title={en ? 'From practice to useful questions.' : 'De la pratique aux bonnes questions.'}
+    text={en ? 'Ideas drawn from my digital work: how to scope a project, verify a result and keep a clear direction. Each article offers a practical starting point for your own situation.' : 'Des réflexions issues de ma pratique numérique : cadrer un projet, vérifier un résultat et garder une direction claire. Chaque article propose un point de départ concret pour votre propre situation.'}
+  />
+  <section class="section section--muted" aria-label={en ? 'Latest articles' : 'Derniers articles'}>
+    <div class="shell journal-grid">
+      {visibleJournalEntries.length === 0 && <p class="lede">{en ? 'The first field notes are being prepared. In the meantime, explore the project leadership and AI service pages.' : 'Les premières notes de terrain sont en préparation. En attendant, découvrez les pages consacrées au pilotage de projet et à l’IA.'} <a class="text-link" href={en ? '/en/project-leadership/' : '/pilotage-projet-complexe/'}>{en ? 'Explore the approach ↗' : 'Découvrir l’approche ↗'}</a></p>}
+      {visibleJournalEntries.map(entry => {
+        const copy = entry.copy[locale];
+        return <article class="journal-card">
+          <p class="eyebrow">{copy.category}</p>
+          <p class="journal-meta">{!isJournalPublished(entry) && (en ? 'Preview · ' : 'Prévisualisation · ')}<time datetime={entry.publishedAt ?? entry.preparedAt}>{formatDate(entry.publishedAt ?? entry.preparedAt)}</time> · {readingMinutes(copy)} min</p>
+          <h2><a href={journalPath(entry, locale)}>{copy.title}</a></h2>
+          <p>{copy.description}</p>
+          <a class="text-link" href={journalPath(entry, locale)}>{en ? 'Read the article' : 'Lire l’article'} <span aria-hidden="true">↗</span><span class="sr-only"> : {copy.title}</span></a>
+        </article>;
+      })}
+    </div>
+  </section>
+</BaseLayout>

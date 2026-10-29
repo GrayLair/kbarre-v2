@@ -1,3 +1,5 @@
+import { journalEntries, journalPath } from './journal';
+
 export type Locale = 'fr' | 'en';
 
 const englishPaths: Record<string, string> = {
@@ -19,6 +21,10 @@ const englishPaths: Record<string, string> = {
   '/merci': '/en/thank-you',
   '/mentions-legales': '/en/legal-notice',
   '/confidentialite': '/en/privacy',
+  '/blog': '/en/blog',
+  ...Object.fromEntries(journalEntries.map(entry => [
+    journalPath(entry, 'fr').replace(/\/$/, ''), journalPath(entry, 'en').replace(/\/$/, ''),
+  ])),
 };
 
 const frenchPaths = Object.fromEntries(

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import PracticeNotes from '../components/PracticeNotes.astro';
 
 const experience = [
   {
@@ -173,4 +174,5 @@ const expertise = [
       <p class="profile-recruiter-note">Vous évaluez un profil pour une mission ou un poste ? Retrouvez le parcours détaillé ci-dessus, ou <a href="https://www.linkedin.com/in/k%C3%A9vin-barr%C3%A9-324610148/" target="_blank" rel="noopener noreferrer">consultez LinkedIn ↗</a>.</p>
     </div>
   </section>
+  <PracticeNotes focus="profile" />
 </BaseLayout>

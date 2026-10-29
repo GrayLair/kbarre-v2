@@ -1,6 +1,7 @@
 ---
 // One route renders each static English page, including /en itself.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PracticeNotes from '../../components/PracticeNotes.astro';
 import PageHero from '../../components/PageHero.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import SeoFaq from '../../components/SeoFaq.astro';
@@ -150,4 +151,6 @@ const projects = portfolioReferences;
   {page === 'legal-notice' && <section class="section"><div class="shell privacy-copy"><p class="eyebrow">Legal notice</p><h1>Legal information.</h1><p>The authoritative legal notice for kbarre.fr is provided in French.</p><a class="text-link" href="/mentions-legales/">Read the French legal notice <span aria-hidden="true">↗</span></a></div></section>}
 
   {page === 'privacy' && <section class="section"><div class="shell privacy-copy"><p class="eyebrow">Privacy</p><h1>How contact data is used.</h1><p>Information submitted through the contact form is used only to reply to your request and prepare a possible conversation. It is sent to Kévin Barré by email, with no database or transfer to third parties.</p><p>The authoritative privacy information is provided in French.</p><a class="text-link" href="/confidentialite/">Read the French privacy information <span aria-hidden="true">↗</span></a></div></section>}
+  {page === 'profile' && <PracticeNotes focus="profile" locale="en" />}
+  {page === 'premium-websites' && <PracticeNotes focus="web" locale="en" />}
 </BaseLayout>
