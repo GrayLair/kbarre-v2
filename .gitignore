@@ -1,5 +1,9 @@
 # Dependencies and Astro build output
 node_modules/
+server/contact/vendor/
+server/contact/config.php
+server/contact/state/
+release/
 dist/
 .astro/
 
