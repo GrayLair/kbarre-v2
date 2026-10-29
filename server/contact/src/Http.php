@@ -50,6 +50,7 @@ final class Http
                 parse_str($raw, $data);
                 $locale = ($data['locale'] ?? '') === 'en' ? 'en' : 'fr';
                 $redirect = $app->submit($data, $ip, time());
+                $reason = $app->outcome();
                 $result = ['ok' => true, 'redirect' => $redirect];
                 if (!self::wantsJson()) {
                     $status = 303;

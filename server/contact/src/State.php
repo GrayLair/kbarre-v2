@@ -84,5 +84,10 @@ final class State
             return $stmt->rowCount() === 1;
         });
     }
+
+    public function purgeExpired(int $now): void
+    {
+        $this->transaction(function () use ($now): void { $this->purge($now); });
+    }
 }
 

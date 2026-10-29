@@ -7,6 +7,9 @@ final class App
     public readonly State $state;
     public readonly Proof $proof;
     private \Closure $send;
+    private string $outcome = 'accepted';
+
+    public function outcome(): string { return $this->outcome; }
 
     public function __construct(public readonly Config $config, ?callable $send = null)
     {
@@ -24,6 +27,7 @@ final class App
 
     public function submit(array $data, string $ip, int $now): string
     {
+        $this->outcome = 'accepted';
         $this->state->limit('submit', $ip, $now);
         foreach ($data as $value) {
             if (!is_string($value) || !mb_check_encoding($value, 'UTF-8')) {
@@ -33,6 +37,7 @@ final class App
         $locale = ($data['locale'] ?? 'fr') === 'en' ? 'en' : 'fr';
         $location = $locale === 'en' ? '/en/thank-you/' : '/merci/';
         if (trim($data['website'] ?? '') !== '') {
+            $this->outcome = 'honeypot';
             return $location; // Preserve the neutral honeypot response; never send mail.
         }
         $limits = ['name' => 200, 'company' => 200, 'email' => 254, 'phone' => 50,
@@ -71,6 +76,7 @@ final class App
         if (!$sent) {
             throw new Failure(503, 'delivery_unavailable');
         }
+        $this->outcome = 'mail_accepted';
         return $location;
     }
 

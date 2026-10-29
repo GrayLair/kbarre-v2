@@ -13,7 +13,8 @@
     "test:contact:php": "php tests/contact/run.php",
     "test:contact:http": "node tests/contact/http.mjs",
     "test:contact:browser": "node tests/contact/browser.mjs",
-    "package:contact": "node scripts/package-contact.mjs"
+    "package:contact": "node scripts/package-contact.mjs",
+    "test:contact:deployment": "node tests/contact/deployment.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
