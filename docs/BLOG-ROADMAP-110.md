@@ -31,4 +31,8 @@ Les contenus sont préparés au statut `review`, sans date de publication, hors 
 | Web | Site, architecture éditoriale, SEO, contenus, audit et parcours commercial | Arbitrages de présence et d'exploitation, au-delà du seul choix CMS/statique |
 | Création | Musique, vidéo, direction artistique, marque, droits et déclinaisons | Processus créatif, critères de sélection et livrables, au-delà de la provenance d'un fichier |
 
-La sélection détaillée et les contrôles seront complétés après la synthèse de recherche.
+## Résultat préparé
+
+La [sélection détaillée](BLOG-SELECTION-80.json) et le [catalogue de l'extension](BLOG-CATALOGUE-110.md) recensent les 80 nouveaux articles, chacun en français et en anglais. Les 30 articles de départ sont conservés. Le contrôle du catalogue vérifie 110 articles et 220 routes linguistiques.
+
+Les huit dossiers de sources et les [revues indépendantes](research/BLOG-110-EDITORIAL-REVIEW.md) sont conservés dans `docs/research/`. La [revue factuelle ciblée](research/BLOG-110-FACT-REVIEW.md) et la [revue sécurité/Web](research/BLOG-110-SECURITY-FACT-REVIEW.md) indiquent les affirmations examinées et leurs limites. Les 160 nouvelles versions linguistiques n'ont pas toutes bénéficié d'une relecture humaine intégrale ; les articles restent au statut `review`.

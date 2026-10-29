@@ -4,6 +4,8 @@ Consultation : 29 octobre 2026. Les pages ci-dessous ont été trouvées par deu
 
 ## Sources lues
 
+Complément de relecture : [Custom instructions for GitHub Copilot](https://docs.github.com/en/copilot/concepts/prompting-and-context/custom-instructions), GitHub Docs, Tier 1, page ouverte le 29 octobre 2026. Les types d'instructions et leur prise en charge varient selon le client et la surface ; leur interprétation reste non déterministe. Cette source complète l'article sur la portabilité, aux côtés d'OpenAI, Claude Code et OWASP ; elle ne démontre pas un comportement identique entre produits.
+
 | Source | Tier et accès | Constats utiles | Limites |
 |---|---|---|---|
 | [Evaluate agent workflows](https://developers.openai.com/api/docs/guides/agent-evals) — OpenAI API | Tier 1, page ouverte | Distingue l’inspection de traces pendant le débogage des datasets et exécutions répétables pour comparer les changements. | Documentation fournisseur et produit évolutif ; ce n’est pas un protocole neutre complet. |

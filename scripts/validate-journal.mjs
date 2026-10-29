@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { journalEntries, journalPath, readingMinutes } from '../src/data/journal.ts';
 
 const existingIds = new Set(['verify-delivery', 'project-continuity', 'website-redesign']);
@@ -14,7 +14,22 @@ const https = value => {
   assert.equal(url.protocol, 'https:', `Source URL must use HTTPS: ${value}`);
 };
 
-assert.equal(journalEntries.length, 30, 'The target is 30 distinct articles, not 30 translations');
+const selection = JSON.parse(await readFile(new URL('../docs/BLOG-SELECTION-80.json', import.meta.url), 'utf8'));
+const additionalIds = new Set(selection.groups.flatMap(group => group.articles.map(article => article.id)));
+assert.equal(selection.target, 110, 'The requested catalogue target is 110 articles');
+assert.equal(selection.additional, 80, 'The extension contains 80 new articles');
+assert.equal(additionalIds.size, selection.additional, 'Selected additional article IDs must be unique');
+assert.equal(selection.groups.length, 8, 'The extension has eight thematic groups');
+assert(selection.groups.every(group => group.articles.length === 10), 'Each thematic group needs ten articles');
+assert.equal(journalEntries.length, selection.target, 'The target is 110 distinct articles, not 110 translations');
+assert.equal(journalEntries.filter(entry => !additionalIds.has(entry.id)).length, 30, 'Preserve the original 30-article catalogue');
+for (const group of selection.groups) {
+  for (const article of group.articles) {
+    const entry = journalEntries.find(item => item.id === article.id);
+    assert(entry, `Missing selected additional subject: ${article.id}`);
+    assert.equal(entry.copy.fr.category, group.category, `Unexpected category: ${article.id}`);
+  }
+}
 assert.equal(new Set(journalEntries.map(entry => entry.id)).size, journalEntries.length, 'Article IDs must be unique');
 for (const id of requiredSubjects) assert(journalEntries.some(entry => entry.id === id), `Missing requested subject: ${id}`);
 const paths = new Set();
@@ -40,6 +55,11 @@ for (const entry of journalEntries) {
     assert(copy.sections.every(section => section.title && section.paragraphs.length && section.paragraphs.every(Boolean)), `Empty section: ${entry.id}/${locale}`);
     assert(copy.service.href.startsWith(locale === 'en' ? '/en/' : '/') && copy.service.label, `Missing service link: ${entry.id}/${locale}`);
     const count = wordCount(copy);
+    if (additionalIds.has(entry.id)) {
+      assert(copy.sections.length >= 5, `Additional article needs at least five developed sections: ${entry.id}/${locale}`);
+      assert((copy.sources?.length ?? 0) >= 3, `Additional article needs at least three sources: ${entry.id}/${locale}`);
+      assert(copy.sections.filter(section => section.sourceUrls?.length).length >= 2, `Cite the factual sections: ${entry.id}/${locale}`);
+    }
     if (!existingIds.has(entry.id)) {
       assert(count >= (locale === 'fr' ? 600 : 500), `Article too short: ${entry.id}/${locale}, ${count} words`);
       assert((copy.sources?.length ?? 0) >= 2, `Missing factual sources: ${entry.id}/${locale}`);
@@ -48,6 +68,7 @@ for (const entry of journalEntries) {
     for (const source of copy.sources ?? []) {
       https(source.url);
       assert(source.title && source.publisher && source.accessedAt, `Incomplete reference: ${entry.id}/${locale}`);
+      assert.match(source.accessedAt, /^\d{4}-\d{2}-\d{2}$/, `Invalid consultation date: ${entry.id}/${locale}`);
       assert(!urls.has(source.url), `Duplicate source: ${entry.id}/${locale}: ${source.url}`);
       urls.add(source.url);
     }
@@ -64,6 +85,6 @@ for (const entry of journalEntries) {
 }
 assert.equal(paths.size, journalEntries.length * 2, 'Every article needs its own French and English route');
 await mkdir('.qa-artifacts', { recursive: true });
-await writeFile('.qa-artifacts/journal-validation.json', JSON.stringify({ articles: report.length, routes: paths.size, report }, null, 2) + '\n');
+await writeFile('.qa-artifacts/journal-validation.json', JSON.stringify({ articles: report.length, additional: additionalIds.size, routes: paths.size, report }, null, 2) + '\n');
 console.log(`PASS: ${report.length} articles, ${paths.size} locale routes, complete references and source anchors.`);
 console.table(report.map(row => ({ id: row.id, fr: row.locales.fr.words, en: row.locales.en.words, sources: row.locales.fr.sources })));

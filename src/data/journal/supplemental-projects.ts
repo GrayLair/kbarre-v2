@@ -7,7 +7,6 @@ const kanban: JournalSource = { title: 'The Kanban Guide for Scrum Teams', url: 
 const doraMetrics: JournalSource = { title: 'DORA software delivery performance metrics', url: 'https://dora.dev/guides/dora-metrics/', publisher: 'DORA', accessedAt: '2026-10-29' };
 const doraBatches: JournalSource = { title: 'Working in small batches', url: 'https://dora.dev/capabilities/working-in-small-batches/', publisher: 'DORA', accessedAt: '2026-10-29' };
 const trunk: JournalSource = { title: 'Trunk-based development', url: 'https://dora.dev/capabilities/trunk-based-development/', publisher: 'DORA', accessedAt: '2026-10-29' };
-const ci: JournalSource = { title: 'Continuous integration', url: 'https://dora.dev/capabilities/continuous-integration/', publisher: 'DORA', accessedAt: '2026-10-29' };
 const pr: JournalSource = { title: 'About pull requests', url: 'https://docs.github.com/en/pull-requests/get-started/about-pull-requests', publisher: 'GitHub Docs', accessedAt: '2026-10-29' };
 const protectedBranches: JournalSource = { title: 'About protected branches', url: 'https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches', publisher: 'GitHub Docs', accessedAt: '2026-10-29' };
 const mergeQueue: JournalSource = { title: 'Merging a pull request with a merge queue', url: 'https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/merging-a-pull-request-with-a-merge-queue', publisher: 'GitHub Docs', accessedAt: '2026-10-29' };

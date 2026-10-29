@@ -47,3 +47,7 @@ Recherche ciblée réalisée le 29 octobre 2026 avant rédaction. Les pages cit�
 - Le rapport CSPLA est une analyse institutionnelle publiée le 16 juillet 2026; le droit applicable demeure celui des textes et de la jurisprudence pertinents. La grille d'analyse du rapport ne fait pas loi et ne constitue pas une règle de « 100 % humain » ou de profit automatique.
 - Aucun cas individuel de marque, client, photographe ou producteur n'a été présenté comme vécu. Les situations des textes sont explicitement fictives.
 - La bibliothèque éditoriale consultée contient déjà des articles généraux sur qualité IA, refonte Web et POC. Ce lot se concentre sur décisions propres aux médias, à la fabrication et au cycle de diffusion.
+
+## Corrections après relecture
+
+Le permalien L111-1 a été actualisé. La référence et le passage sur la directive DSM, dont le corps n'était pas lisible, ont été remplacés par le texte français de [L122-5-3, Légifrance](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044363192), ouvert au 29 octobre 2026. L'article distingue accès licite et régimes selon les acteurs, finalités et réservations de droits, sans en déduire une permission générale. La nouvelle référence est rattachée à la section de droit français. Le rapport de relecture retrace ce changement ; la notice CSPLA est consultée, pas le PDF complet.

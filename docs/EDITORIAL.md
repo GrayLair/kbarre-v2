@@ -11,7 +11,7 @@ Le contrat éditorial est défini dans les issues [#19](https://github.com/GrayL
 
 ## Prévisualisation et publication
 
-Les trente articles préparés sont au statut `review`. Ils ne sont pas générés par le build de production et sont exclus du sitemap. Le blog affiche un message d’attente tant qu’aucun article n’est publié. Le [catalogue](BLOG-CATALOGUE-30.md) récapitule les titres et le périmètre ; la [feuille de route initiale](BLOG-ROADMAP-30.md) conserve la demande de départ.
+Les articles préparés sont au statut `review`. Ils ne sont pas générés par le build de production et sont exclus du sitemap. Le blog affiche un message d’attente tant qu’aucun article n’est publié. La première sélection reste décrite dans le [catalogue de 30 articles](BLOG-CATALOGUE-30.md) ; la [nouvelle feuille de route](BLOG-ROADMAP-110.md) porte la cible à 110 avec 80 textes supplémentaires, documentés dans le [catalogue de l'extension](BLOG-CATALOGUE-110.md).
 
 Pour prévisualiser les articles en local sous PowerShell :
 
@@ -56,4 +56,8 @@ Chaque article doit avoir un sujet précis, un apport pratique, une hiérarchie 
 
 Publier des capacités et principes génériques autorisés, ou le cas du site lui-même. Ne pas copier de noms de projets privés, extraits, identifiants, prompts, procédures protégées ou chiffres internes. L’accès à une source ne constitue pas une autorisation de publication. Un ticket de planification ne prouve pas une réalisation livrée.
 
-La série atteint maintenant trente articles distincts, avec trente adaptations anglaises. Le nombre est contrôlé par `npm run check:journal`, qui vérifie aussi les identifiants, slugs, sources et la profondeur minimale des vingt-sept nouveaux textes. La publication et la clôture des sujets GitHub restent distinctes de ce contrôle de contenu.
+La série contient 110 articles distincts, avec autant d'adaptations anglaises. La [sélection structurée](BLOG-SELECTION-80.json) réserve les identifiants des 80 nouveaux textes et leur rattachement au backlog. `npm run check:journal` vérifie le total, leur présence, les 220 routes, les identifiants, slugs, sources et la profondeur minimale. Chaque texte de l'extension comporte au moins cinq sections, trois références et des citations dans les sections factuelles. Ces seuils ne remplacent pas la relecture : la qualité d'un article dépend de sa précision et de son apport, pas seulement de sa longueur.
+
+La [synthèse de recherche préalable](research/BLOG-110-SYNTHESE.md) et les dossiers par lot tracent les sources consultées, leurs limites et les recommandations publiques. Reddit apporte des questions et des pistes de lecture ; les faits techniques remontent aux sources primaires. Les billets de fournisseurs et leurs cas internes restent attribués à leurs auteurs. Les sources spécialisées sont complétées avant la rédaction de chaque lot.
+
+Le catalogue se régénère avec `node scripts/build-journal-catalogue.mjs`. La publication et la clôture des sujets GitHub restent distinctes du contrôle de contenu.
