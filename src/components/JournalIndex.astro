@@ -7,6 +7,8 @@ import type { Locale } from '../data/i18n';
 interface Props { locale?: Locale; }
 const { locale = 'fr' } = Astro.props;
 const en = locale === 'en';
+const categories = [...new Set(visibleJournalEntries.map(entry => entry.copy[locale].category))]
+  .sort((a, b) => a.localeCompare(b, locale));
 const formatDate = (date: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-FR', {
   dateStyle: 'long', timeZone: 'UTC',
 }).format(new Date(`${date}T00:00:00Z`));
@@ -21,14 +23,24 @@ const formatDate = (date: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-
   <PageHero
     eyebrow={en ? 'Blog · Field notes' : 'Blog · Notes de terrain'}
     title={en ? 'From practice to useful questions.' : 'De la pratique aux bonnes questions.'}
-    text={en ? 'Ideas drawn from my digital work: how to scope a project, verify a result and keep a clear direction. Each article offers a practical starting point for your own situation.' : 'Des réflexions issues de ma pratique numérique : cadrer un projet, vérifier un résultat et garder une direction claire. Chaque article propose un point de départ concret pour votre propre situation.'}
+    text={en ? 'Sourced analysis and practical guidance for teams building with AI: craftsmanship, products, costs and technical choices. Each article offers a concrete starting point for your own decisions.' : 'Des analyses sourcées et des repères de pratique pour les équipes qui construisent avec l’IA : savoir-faire, produits, coûts et choix techniques. Chaque article propose un point de départ concret pour vos décisions.'}
   />
   <section class="section section--muted" aria-label={en ? 'Latest articles' : 'Derniers articles'}>
-    <div class="shell journal-grid">
+    <div class="shell" data-journal-browser data-locale={locale}>
+      {visibleJournalEntries.length > 0 && <>
+        <form class="journal-filters" data-journal-controls hidden role="search">
+          <div><label for="journal-search">{en ? 'Find an article' : 'Trouver un article'}</label><input id="journal-search" type="search" name="q" placeholder={en ? 'Caching, management, CMS…' : 'Caching, management, CMS…'} autocomplete="off" /></div>
+          <div><label for="journal-category">{en ? 'Topic' : 'Thème'}</label><select id="journal-category" name="category"><option value="">{en ? 'All topics' : 'Tous les thèmes'}</option>{categories.map(category => <option value={category}>{category}</option>)}</select></div>
+          <button class="button button--outline" type="button" data-journal-reset>{en ? 'Reset' : 'Réinitialiser'}</button>
+        </form>
+        <p class="journal-results" data-journal-results role="status" aria-live="polite" tabindex="-1">{visibleJournalEntries.length} articles</p>
+        <p data-journal-empty hidden>{en ? 'No articles match. Try another word or choose all topics.' : 'Aucun article ne correspond. Essayez un autre mot ou sélectionnez tous les thèmes.'}</p>
+      </>}
+      <div class="journal-grid" data-journal-grid>
       {visibleJournalEntries.length === 0 && <p class="lede">{en ? 'The first field notes are being prepared. In the meantime, explore the project leadership and AI service pages.' : 'Les premières notes de terrain sont en préparation. En attendant, découvrez les pages consacrées au pilotage de projet et à l’IA.'} <a class="text-link" href={en ? '/en/project-leadership/' : '/pilotage-projet-complexe/'}>{en ? 'Explore the approach ↗' : 'Découvrir l’approche ↗'}</a></p>}
       {visibleJournalEntries.map(entry => {
         const copy = entry.copy[locale];
-        return <article class="journal-card">
+        return <article class="journal-card" data-category={copy.category} data-search={`${copy.title} ${copy.description} ${copy.category}`}>
           <p class="eyebrow">{copy.category}</p>
           <p class="journal-meta">{!isJournalPublished(entry) && (en ? 'Preview · ' : 'Prévisualisation · ')}<time datetime={entry.publishedAt ?? entry.preparedAt}>{formatDate(entry.publishedAt ?? entry.preparedAt)}</time> · {readingMinutes(copy)} min</p>
           <h2><a href={journalPath(entry, locale)}>{copy.title}</a></h2>
@@ -36,6 +48,68 @@ const formatDate = (date: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-
           <a class="text-link" href={journalPath(entry, locale)}>{en ? 'Read the article' : 'Lire l’article'} <span aria-hidden="true">↗</span><span class="sr-only"> : {copy.title}</span></a>
         </article>;
       })}
+      </div>
+      <nav class="journal-pagination" data-journal-pagination hidden aria-label={en ? 'Article pages' : 'Pages des articles'}>
+        <button class="button button--outline" type="button" data-journal-prev>{en ? 'Previous' : 'Précédent'}</button>
+        <span data-journal-page></span>
+        <button class="button button--outline" type="button" data-journal-next>{en ? 'Next' : 'Suivant'}</button>
+      </nav>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-journal-browser]').forEach(browser => {
+    const controls = browser.querySelector<HTMLFormElement>('[data-journal-controls]');
+    const query = browser.querySelector<HTMLInputElement>('[name="q"]');
+    const category = browser.querySelector<HTMLSelectElement>('[name="category"]');
+    const results = browser.querySelector<HTMLElement>('[data-journal-results]');
+    const empty = browser.querySelector<HTMLElement>('[data-journal-empty]');
+    const pagination = browser.querySelector<HTMLElement>('[data-journal-pagination]');
+    const previous = browser.querySelector<HTMLButtonElement>('[data-journal-prev]');
+    const next = browser.querySelector<HTMLButtonElement>('[data-journal-next]');
+    const pageLabel = browser.querySelector<HTMLElement>('[data-journal-page]');
+    const cards = [...browser.querySelectorAll<HTMLElement>('.journal-card')];
+    if (!controls || !query || !category || !results || !empty || !pagination || !previous || !next || !pageLabel) return;
+    const english = browser.dataset.locale === 'en';
+    const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().trim();
+    const pageSize = 9;
+    let currentPage = 1;
+    const location = new URL(window.location.href);
+    query.value = location.searchParams.get('q') ?? '';
+    const initialCategory = location.searchParams.get('category') ?? '';
+    if ([...category.options].some(option => option.value === initialCategory)) category.value = initialCategory;
+    const initialPage = Number(location.searchParams.get('page') ?? '1');
+    if (Number.isInteger(initialPage) && initialPage > 0) currentPage = initialPage;
+    const update = () => {
+      const words = normalize(query.value).split(/\s+/).filter(Boolean);
+      const matches = cards.filter(card => (!category.value || card.dataset.category === category.value)
+        && words.every(word => normalize(card.dataset.search ?? '').includes(word)));
+      const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
+      currentPage = Math.min(currentPage, pageCount);
+      const displayed = new Set(matches.slice((currentPage - 1) * pageSize, currentPage * pageSize));
+      cards.forEach(card => { card.hidden = !displayed.has(card); });
+      results.textContent = `${matches.length} ${english ? (matches.length === 1 ? 'article found' : 'articles found') : (matches.length === 1 ? 'article trouvé' : 'articles trouvés')}`;
+      empty.hidden = matches.length > 0;
+      previous.disabled = currentPage === 1;
+      next.disabled = currentPage === pageCount;
+      pagination.hidden = pageCount === 1;
+      pageLabel.textContent = english ? `Page ${currentPage} of ${pageCount}` : `Page ${currentPage} sur ${pageCount}`;
+      const url = new URL(window.location.href);
+      for (const [name, value] of [['q', query.value.trim()], ['category', category.value], ['page', currentPage === 1 ? '' : String(currentPage)]]) {
+        if (value) url.searchParams.set(name, value); else url.searchParams.delete(name);
+      }
+      window.history.replaceState(null, '', url);
+    };
+    controls.hidden = false;
+    controls.addEventListener('submit', event => { event.preventDefault(); currentPage = 1; update(); });
+    query.addEventListener('input', () => { currentPage = 1; update(); });
+    category.addEventListener('change', () => { currentPage = 1; update(); });
+    browser.querySelector('[data-journal-reset]')?.addEventListener('click', () => {
+      query.value = ''; category.value = ''; currentPage = 1; update(); query.focus();
+    });
+    previous.addEventListener('click', () => { currentPage = Math.max(1, currentPage - 1); update(); results.focus(); });
+    next.addEventListener('click', () => { currentPage++; update(); results.focus(); });
+    update();
+  });
+</script>

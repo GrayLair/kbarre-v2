@@ -14,6 +14,11 @@ const indexPath = en ? '/en/blog/' : '/blog/';
 const date = new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-FR', { dateStyle: 'long', timeZone: 'UTC' })
   .format(new Date(`${entry.publishedAt ?? entry.preparedAt}T00:00:00Z`));
 const url = new URL(journalPath(entry, locale), site.url).href;
+const sources = copy.sources ?? [];
+const sourceNumber = (sourceUrl: string) => sources.findIndex(source => source.url === sourceUrl) + 1;
+const relatedEntries = visibleJournalEntries.filter(other => other.id !== entry.id)
+  .sort((a, b) => Number(b.copy[locale].category === copy.category) - Number(a.copy[locale].category === copy.category))
+  .slice(0, 3);
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -47,18 +52,35 @@ const schema = {
         <h2>{section.title}</h2>
         {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
         {section.checklist && <ul>{section.checklist.map(item => <li>{item}</li>)}</ul>}
+        {Boolean(section.sourceUrls?.length) && <p class="journal-citations">
+          {en ? 'References for this section: ' : 'Repères pour cette section : '}
+          {section.sourceUrls?.map(sourceUrl => <a href={`#source-${sourceNumber(sourceUrl)}`} aria-label={`Source ${sourceNumber(sourceUrl)}`}>[{sourceNumber(sourceUrl)}]</a>)}
+        </p>}
       </section>)}
       <aside class="journal-takeaway">
         <h2>{en ? 'A first step for your project' : 'Un premier pas pour votre projet'}</h2>
         <p>{copy.takeaway}</p>
         <a class="text-link" href={copy.service.href}>{copy.service.label} <span aria-hidden="true">↗</span></a>
       </aside>
+      {sources.length > 0 && <section class="journal-sources" aria-labelledby="article-sources">
+        <h2 id="article-sources">{en ? 'Sources and further reading' : 'Sources et prolongements'}</h2>
+        <p>{en ? 'The references support the factual points discussed above. Examples and decision frameworks are editorial proposals; they do not establish a result for your own project.' : 'Ces références étayent les points factuels discutés dans le texte. Les exemples et cadres de décision sont des propositions éditoriales ; ils ne démontrent pas un résultat pour votre propre projet.'}</p>
+        <ol>{sources.map((source, i) => <li id={`source-${i + 1}`}>
+          <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a>
+          <span class="journal-source-meta">{source.publisher} · {en ? 'consulted' : 'consulté le'} <time datetime={source.accessedAt}>{new Intl.DateTimeFormat(en ? 'en-GB' : 'fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${source.accessedAt}T00:00:00Z`))}</time></span>
+        </li>)}</ol>
+      </section>}
+      {Boolean(copy.inspiration?.length) && <aside class="journal-inspiration" aria-labelledby="article-inspiration">
+        <h2 id="article-inspiration">{en ? 'Editorial inspiration' : 'Pistes de veille'}</h2>
+        <p>{en ? 'These AI Explained videos explore related themes and offer further questions to consider. The article develops its own analysis and uses the sources listed above for factual claims.' : 'Ces vidéos d’AI Explained abordent des thèmes proches et proposent d’autres questions à explorer. L’article développe sa propre analyse et s’appuie sur les sources ci-dessus pour les affirmations factuelles.'}</p>
+        <ul>{copy.inspiration?.map(video => <li><a href={video.url} target="_blank" rel="noopener noreferrer">{video.title} <span aria-hidden="true">↗</span></a>{video.publishedAt && <span class="journal-source-meta">{video.publishedAt}</span>}</li>)}</ul>
+      </aside>}
     </div>
   </article>
   <section class="section section--muted" aria-labelledby="related-articles">
     <div class="shell">
       <h2 id="related-articles">{en ? 'Continue reading' : 'Poursuivre la lecture'}</h2>
-      <ul class="journal-related">{visibleJournalEntries.filter(other => other.id !== entry.id).map(other =>
+      <ul class="journal-related">{relatedEntries.map(other =>
         <li><a class="text-link" href={journalPath(other, locale)}>{other.copy[locale].title} <span aria-hidden="true">↗</span></a></li>
       )}</ul>
     </div>

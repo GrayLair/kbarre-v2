@@ -503,6 +503,31 @@ html[data-theme='dark'] .hero-note { box-shadow: 0 10px 25px #00000030; }
 .journal-body h2 { font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; margin-bottom: 1.25rem; }
 .journal-body p { line-height: 1.85; margin-bottom: 1.25rem; }
 .journal-related { list-style: none; padding: 0; margin-top: 1.5rem; display: grid; gap: 1.25rem; }
+.journal-filters { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr) auto; align-items: end; gap: 1rem; margin-bottom: 1.5rem; }
+.journal-filters label { display: block; font-weight: 650; margin-bottom: .5rem; }
+.journal-filters input, .journal-filters select { width: 100%; min-height: 3.3rem; padding: .85rem 1rem; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: .7rem; }
+.journal-filters .button { min-height: 3.3rem; }
+.journal-results { margin-bottom: 1.5rem; scroll-margin-top: 7rem; }
+.journal-results:focus-visible { outline: 2px solid var(--purple); outline-offset: .4rem; }
+.journal-pagination { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+.journal-pagination button:disabled { opacity: .45; cursor: default; }
+.journal-card[hidden], .journal-filters[hidden], .journal-pagination[hidden] { display: none; }
+.journal-citations { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; font-size: .85rem; }
+.journal-citations a { text-decoration: underline; text-underline-offset: .2em; }
+.journal-sources { border-top: 1px solid var(--line); padding-top: 2rem; }
+.journal-sources ol { padding-left: 1.4rem; }
+.journal-sources li { margin-block: 1rem; scroll-margin-top: 7rem; }
+.journal-sources a, .journal-inspiration a { text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+.journal-source-meta { display: block; font-size: .8rem; opacity: .8; margin-top: .3rem; }
+.journal-inspiration { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.journal-inspiration ul { padding-left: 1.3rem; }
+@media (max-width: 760px) {
+  .journal-filters { grid-template-columns: 1fr; }
+  .journal-filters .button { justify-self: start; }
+  .journal-pagination { gap: .6rem; }
+  .journal-pagination .button { padding-inline: 1rem; }
+  .journal-pagination span { font-size: .85rem; white-space: nowrap; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

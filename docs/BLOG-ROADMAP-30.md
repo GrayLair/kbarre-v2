@@ -60,3 +60,9 @@ Le sommaire final devra éviter les doublons, équilibrer méthodes durables et 
 7. **Livraison :** pousser la branche et actualiser la PR, avec un compte rendu des vérifications et des éventuelles limites restantes. La mise en ligne reste soumise à la relecture humaine.
 
 État au moment de la création de cette note : documentation préalable rédigée ; recherche et rédaction de l’extension non commencées.
+
+## Avancement après cette note préalable
+
+La liste ci-dessus a été consignée dans le commit `961c416` et poussée avant le début de la recherche. Le [catalogue des trente articles](BLOG-CATALOGUE-30.md) et le [relevé AI Explained](BLOG-VEILLE-AI-EXPLAINED.md) documentent ensuite les choix réalisés. Les nouveaux textes sont rédigés dans les deux langues et restent en revue ; les vérifications d’intégration et de rendu accompagnent la livraison dans la PR #63.
+
+La livraison des trente articles et du [fonds documentaire supplémentaire](BLOG-BACKLOG-IDEES.md) est maintenant isolée sur la branche `content/blog-30-review-20261029`, issue de `961c416`. Cette branche conserve le périmètre de trente articles et permet une revue indépendante des autres extensions en cours.
