@@ -82,4 +82,3 @@ Toutes les recommandations ci-dessous sont réellement nommées dans les fils li
 - Aucune source obtenue dans cette passe n’atteste une recommandation substantielle provenant des pages « Anthropic engineering », « OpenAI engineering » ou « Copilot best practices ». Ces pages n’ont pas été explorées dans ce sous-rapport; les traiter dans la synthèse globale avec un parcours séparé et des sources primaires.
 - L’échantillon Reddit a été élargi au-delà d’un seul subreddit, mais reste opportuniste, anglophone, et centré sur les discussions publiques trouvées. Il ne mesure pas l’audience de AI Explained ni les habitudes de ses abonnés.
 - La compétence officielle « deep-research » recommande des agents de collecte pour une recherche standard; la politique de ce lane interdit de déléguer, donc cette passe a été menée par un seul agent. Le protocole qualité (requêtes variées, lecture de pages, provenance et caveats) a été appliqué dans cette limite.
-
