@@ -1,0 +1,66 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import type { Locale } from '../data/i18n';
+interface Props { locale?: Locale; focus: 'web' | 'project' | 'ai' | 'profile'; }
+const { locale = 'fr', focus } = Astro.props;
+const en = locale === 'en';
+const notes = {
+  web: {
+    title: ['Choisir une base que vous pourrez faire vivre.', 'Choose a foundation you can maintain.'],
+    intro: ['Mon travail récent relie sites statiques, contenus bilingues et intégration CMS. Le choix technique suit votre besoin de publication et de maintenance.', 'My recent work connects static websites, bilingual content and CMS integration. Technical choices follow your publishing and maintenance needs.'],
+    cards: [
+      ['WordPress, Gutenberg et React', 'WordPress, Gutenberg and React', 'Conserver une édition structurée dans WordPress et relier les contenus à une interface React lorsque le projet justifie une architecture headless.', 'Keep structured editing in WordPress and connect content to a React interface when the project calls for a headless architecture.'],
+      ['Un site statique bien structuré', 'A well-structured static website', 'Avec Astro, organiser les pages, les langues, les métadonnées et les médias autour de parcours lisibles et d’un site simple à maintenir.', 'Use Astro to organise pages, languages, metadata and media around clear journeys and a maintainable website.'],
+      ['Une livraison relue dans son contexte', 'Review delivery in context', 'Vérifier les liens, les contenus et le rendu mobile, puis transmettre les repères nécessaires aux prochaines mises à jour.', 'Check links, content and mobile rendering, then provide the information needed for future updates.'],
+    ],
+    href: ['/realisations/kbarre-v2/', '/en/work/kbarre-v2/'],
+    label: ['Voir la refonte de mon propre site', 'Explore the redesign of my own website'],
+  },
+  project: {
+    title: ['Des livrables qui permettent de continuer.', 'Deliverables that make the next step clear.'],
+    intro: ['Une intervention de pilotage doit laisser des informations utilisables par les personnes qui réalisent, valident ou reprennent le projet.', 'Project leadership should leave information that people can use to implement, validate or take over the work.'],
+    cards: [
+      ['Un état de départ fiable', 'A reliable starting point', 'Comparer la demande, l’existant et les validations conservées. Identifier les inconnues avant d’engager la suite.', 'Compare the request, existing work and retained validations. Identify unknowns before starting the next stage.'],
+      ['Des critères d’acceptation', 'Acceptance criteria', 'Relier chaque livraison à un comportement ou un résultat observable, avec un responsable de la décision.', 'Connect each delivery to observable behaviour or an outcome, with a person responsible for acceptance.'],
+      ['Un point de reprise clair', 'A clear continuation point', 'Conserver les décisions, les dépendances et la prochaine action utile pour faciliter les relais et la maintenance.', 'Preserve decisions, dependencies and the next useful action to support handovers and maintenance.'],
+    ],
+    href: ['/blog/', '/en/blog/'],
+    label: ['Retrouver mes notes sur le pilotage', 'Read my project delivery notes'],
+  },
+  ai: {
+    title: ['Du prototype à un usage contrôlable.', 'From a prototype to a controllable workflow.'],
+    intro: ['Ma pratique récente porte sur l’intégration d’outils, les formats de données et la vérification des résultats. L’usage reste cadré par un besoin et une responsabilité humaine.', 'My recent practice focuses on tool integration, data formats and result verification. Each use remains bounded by a need and human responsibility.'],
+    cards: [
+      ['Des entrées et sorties explicites', 'Explicit inputs and outputs', 'Définir les informations attendues et les formats de réponse pour pouvoir contrôler ce qu’un assistant transmet à l’étape suivante.', 'Define expected information and response formats so an assistant’s output can be checked before the next step.'],
+      ['Des erreurs compréhensibles', 'Understandable failures', 'Prévoir les cas incomplets et les incompatibilités de format. Une erreur doit permettre de décider quoi corriger ou reprendre.', 'Account for incomplete cases and incompatible formats. An error should make it possible to decide what needs correction or recovery.'],
+      ['Une vérification séparée', 'Separate verification', 'Relire le résultat au regard de la demande, conserver les limites connues et faire accepter les changements importants par le responsable du projet.', 'Review the result against the request, retain known limits and have significant changes accepted by the project owner.'],
+    ],
+    href: ['/blog/', '/en/blog/'],
+    label: ['Lire les notes sur l’IA et la qualité', 'Read the notes on AI and quality'],
+  },
+  profile: {
+    title: ['Une pratique technique qui reste active.', 'A technical practice that stays current.'],
+    intro: ['Mes projets récents prolongent le parcours de développeur et de chef de projet avec des intégrations Web, des outils d’automatisation et une attention portée à la qualité des livrables.', 'My recent projects extend my development and project management background through web integration, automation tools and attention to delivery quality.'],
+    cards: [
+      ['Web et contenus', 'Web and content', 'Astro, WordPress/Gutenberg et React : structurer les contenus, relier les interfaces et maintenir la cohérence des versions françaises et anglaises.', 'Astro, WordPress/Gutenberg and React: structure content, connect interfaces and maintain consistency across French and English versions.'],
+      ['Automatisation et intégration', 'Automation and integration', 'Scripts PowerShell, outils Node.js/TypeScript et échanges JSON : rendre les tâches répétables et les formats vérifiables dans des projets personnels et de R&D.', 'PowerShell scripts, Node.js/TypeScript tools and JSON exchanges: make tasks repeatable and formats verifiable in personal and R&D projects.'],
+      ['Qualité et continuité', 'Quality and continuity', 'Tests de régression, relecture distincte, décisions documentées et transmission : donner une suite claire au travail produit avec les outils d’IA.', 'Regression checks, separate review, documented decisions and handovers: provide clear next steps for work produced with AI tools.'],
+    ],
+    href: ['/blog/', '/en/blog/'],
+    label: ['Explorer les notes de terrain', 'Explore the field notes'],
+  },
+}[focus];
+const idx = en ? 1 : 0;
+---
+<section class="section section--muted">
+  <div class="shell">
+    <SectionHeading eyebrow={en ? 'In practice' : 'Dans la pratique'} title={notes.title[idx]} text={notes.intro[idx]} align="split" />
+    <div class="service-grid">
+      {notes.cards.map((card, i) => <article class="service-card">
+        <span class="service-card__number">{String(i + 1).padStart(2, '0')}</span>
+        <h3>{card[idx]}</h3><p>{card[idx + 2]}</p>
+      </article>)}
+    </div>
+    <p class="editorial-copy"><a class="text-link" href={notes.href[idx]}>{notes.label[idx]} <span aria-hidden="true">↗</span></a></p>
+  </div>
+</section>

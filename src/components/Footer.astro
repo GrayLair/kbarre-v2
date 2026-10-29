@@ -8,8 +8,8 @@ interface Props { locale?: Locale; }
 const { locale = 'fr' } = Astro.props;
 const isEnglish = locale === 'en';
 const items = isEnglish ? navigationEn : navigation;
-const localPageHref = isEnglish ? '/en/digital-consultant-nantes' : '/consultant-digital-nantes';
-const contactHref = isEnglish ? '/en/contact' : '/contact';
+const localPageHref = isEnglish ? '/en/digital-consultant-nantes/' : '/consultant-digital-nantes/';
+const contactHref = isEnglish ? '/en/contact/' : '/contact/';
 ---
 
 <footer class="site-footer">
@@ -37,8 +37,8 @@ const contactHref = isEnglish ? '/en/contact' : '/contact';
     <span>© {year} {site.person}</span>
       <span>{isEnglish ? 'Nantes · France · Remote' : site.location}</span>
       <div>
-        <a href={isEnglish ? '/en/legal-notice' : '/mentions-legales'}>{isEnglish ? 'Legal notice' : 'Mentions légales'}</a>
-        <a href={isEnglish ? '/en/privacy' : '/confidentialite'}>{isEnglish ? 'Privacy' : 'Confidentialité'}</a>
+        <a href={isEnglish ? '/en/legal-notice/' : '/mentions-legales/'}>{isEnglish ? 'Legal notice' : 'Mentions légales'}</a>
+        <a href={isEnglish ? '/en/privacy/' : '/confidentialite/'}>{isEnglish ? 'Privacy' : 'Confidentialité'}</a>
     </div>
   </div>
 </footer>

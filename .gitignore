@@ -12,6 +12,8 @@ dist-v2/
 # Local QA tooling, reports and visual review exports
 .qa-tools/
 .qa-artifacts/
+.playwright-cli/
+output/playwright/
 home-logo-review.png
 remote-new-kbarre.html
 

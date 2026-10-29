@@ -9,6 +9,7 @@
     "build": "npm run optimize:css && cross-env NAPI_RS_FORCE_WASI=true astro build",
     "preview": "cross-env NAPI_RS_FORCE_WASI=true astro preview",
     "check": "cross-env NAPI_RS_FORCE_WASI=true astro check",
+    "check:journal": "node scripts/validate-journal.mjs",
     "optimize:css": "node scripts/minify-global-css.mjs"
   },
   "dependencies": {
