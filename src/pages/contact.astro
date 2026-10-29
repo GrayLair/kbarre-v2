@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import ContactProtection from '../components/ContactProtection.astro';
 import { site } from '../data/site';
 ---
 
@@ -20,19 +21,19 @@ import { site } from '../data/site';
         <div class="lead-form__grid">
           <label>
             <span>Nom <b aria-hidden="true">*</b></span>
-            <input name="name" type="text" autocomplete="name" required minlength="2" />
+            <input name="name" type="text" maxlength="200" autocomplete="name" required minlength="2" />
           </label>
           <label>
             <span>Organisation</span>
-            <input name="company" type="text" autocomplete="organization" />
+            <input name="company" type="text" maxlength="200" autocomplete="organization" />
           </label>
           <label>
             <span>E-mail <b aria-hidden="true">*</b></span>
-            <input name="email" type="email" autocomplete="email" required />
+            <input name="email" type="email" maxlength="254" autocomplete="email" required />
           </label>
           <label>
             <span>Téléphone</span>
-            <input name="phone" type="tel" autocomplete="tel" />
+            <input name="phone" type="tel" maxlength="50" autocomplete="tel" />
           </label>
         </div>
         <label>
@@ -64,7 +65,7 @@ import { site } from '../data/site';
         </label>
         <label>
           <span>Quelques lignes sur le contexte <b aria-hidden="true">*</b></span>
-          <textarea name="message" rows="5" required minlength="20" aria-describedby="message-hint" placeholder="Ce que vous aimeriez faire évoluer, votre contexte, vos envies…"></textarea>
+          <textarea name="message" rows="5" maxlength="10000" required minlength="20" aria-describedby="message-hint" placeholder="Ce que vous aimeriez faire évoluer, votre contexte, vos envies…"></textarea>
           <small id="message-hint">20 caractères minimum. Quelques phrases suffisent.</small>
         </label>
         <label class="lead-form__honeypot" aria-hidden="true">
@@ -75,6 +76,7 @@ import { site } from '../data/site';
           Les champs marqués d’un astérisque sont nécessaires pour traiter votre demande. Vos données sont utilisées par Kévin Barré pour vous répondre et conservées au plus trois ans après le dernier contact si aucun contrat n’est conclu.{' '}
           <a href="/confidentialite">En savoir plus sur vos droits et vos données.</a>
         </p>
+        <ContactProtection locale="fr" />
         <button class="button" type="submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
       </form>
       <div>

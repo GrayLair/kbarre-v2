@@ -9,10 +9,16 @@
     "build": "npm run optimize:css && cross-env NAPI_RS_FORCE_WASI=true astro build",
     "preview": "cross-env NAPI_RS_FORCE_WASI=true astro preview",
     "check": "cross-env NAPI_RS_FORCE_WASI=true astro check",
-    "optimize:css": "node scripts/minify-global-css.mjs"
+    "optimize:css": "node scripts/minify-global-css.mjs",
+    "test:contact:php": "php tests/contact/run.php",
+    "test:contact:http": "node tests/contact/http.mjs",
+    "test:contact:browser": "node tests/contact/browser.mjs",
+    "package:contact": "node scripts/package-contact.mjs",
+    "test:contact:deployment": "node tests/contact/deployment.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
+    "altcha": "3.5.0",
     "astro": "^7.3.1",
     "embla-carousel": "^8.6.0",
     "embla-carousel-auto-scroll": "^8.6.0",
@@ -20,7 +26,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@bruits/satteri-wasm32-wasi": "^0.10.5",
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "csso": "5.0.5",
+    "playwright": "1.64.1"
+  },
+  "optionalDependencies": {
+    "@bruits/satteri-wasm32-wasi": "0.10.5"
   }
 }
