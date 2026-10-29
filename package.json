@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
+    "altcha": "3.5.0",
     "astro": "^7.3.1",
     "embla-carousel": "^8.6.0",
     "embla-carousel-auto-scroll": "^8.6.0",
@@ -20,7 +21,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@bruits/satteri-wasm32-wasi": "^0.10.5",
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "csso": "5.0.5"
+  },
+  "optionalDependencies": {
+    "@bruits/satteri-wasm32-wasi": "0.10.5"
   }
 }

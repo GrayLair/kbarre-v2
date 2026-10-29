@@ -1,0 +1,32 @@
+---
+interface Props { locale?: 'fr' | 'en' }
+const { locale = 'fr' } = Astro.props;
+const en = locale === 'en';
+---
+<input type="hidden" name="locale" value={locale} />
+<div class="contact-protection" data-contact-protection data-locale={locale}>
+  <altcha-widget
+    challenge="/contact-challenge.php"
+    name="altcha"
+    auto="off"
+    display="invisible"
+    language={en ? 'en' : 'fr-fr'}
+    configuration={JSON.stringify({ humanInteractionSignature: false, serverVerificationFields: false, serverVerificationTimeZone: false, credentials: 'omit', workers: 2 })}
+  ></altcha-widget>
+  <p class="contact-protection__status" data-contact-status role="status" aria-live="polite" aria-atomic="true" tabindex="-1">
+    {en ? 'Automatic spam protection. If sending is unavailable, you can contact me by email or phone.' : 'Protection automatique contre le spam. Si l’envoi est indisponible, vous pouvez me joindre par e-mail ou téléphone.'}
+  </p>
+  <p><a href="mailto:contact@kbarre.fr">{en ? 'Contact me directly by email' : 'Me contacter directement par e-mail'}</a></p>
+  <noscript><p>{en ? 'JavaScript is required for protected sending. Please use the email or phone links.' : 'JavaScript est nécessaire pour cet envoi protégé. Utilisez les liens e-mail ou téléphone.'}</p></noscript>
+</div>
+<script>
+  import { setupContactForms } from '../scripts/contact-form';
+  setupContactForms();
+</script>
+<style>
+  .contact-protection { margin-block: 1rem; }
+  .contact-protection p { margin-block: .5rem; font-size: .9rem; }
+  .contact-protection__status:focus { outline: 2px solid currentColor; outline-offset: 4px; }
+  .contact-protection__status[data-error="true"] { font-weight: 600; }
+</style>
+
